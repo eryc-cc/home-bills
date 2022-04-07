@@ -15,7 +15,7 @@
         border-bottom: 1px solid var(--dark-gray)
 
     &-welcome
-        @include font("--small", false, false, false)
+        @include font("--small")
 
         &-msg
             // Nothing here
@@ -23,7 +23,7 @@
         &-date
             margin-left: .5rem
             
-            @include font(false, "--light-gray", false, false)
+            @include font(false, "--light-gray")
 
 .nav-links
     display: flex
@@ -32,7 +32,7 @@
 .nav-link
     padding: .125rem .5rem
     
-    @include font("--small", "--light-gray", false, false)
+    @include font("--small", "--light-gray")
 
     transition: all 320ms ease
 
@@ -42,4 +42,4 @@
 .nav-copyright
     margin-left: .5rem
 
-    @include font("--small", "--light-gray", false, false)
+    @include font("--small", "--light-gray")
