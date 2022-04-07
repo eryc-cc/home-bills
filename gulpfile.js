@@ -20,6 +20,8 @@ function styles() {
     return (
         gulp.src('src/sass/sassy.sass')
         .pipe(plumber())
+        .pipe(sass().on('error', sass.logError))
+        .pipe(gulp.dest('.tmp/sass'))
         .pipe(sass())
         .pipe(autoprefixer({
             overrideBrowserslist: ['last 3 versions'],
