@@ -1,0 +1,9 @@
+@mixin font($size, $color, $line-height, $alignment)
+    @if $size
+        font-size: var(#{$size})
+    @if $line-height
+        line-height: $line-height
+    @if $alignment
+        text-align: #{$alignment}
+    @if $color
+        color: var(#{$color})
