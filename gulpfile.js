@@ -18,7 +18,7 @@ function reload(done) {
 
 function styles() {
     return (
-        gulp.src('src/sass/main.sass')
+        gulp.src('src/sass/sassy.sass')
         .pipe(plumber())
         .pipe(sass())
         .pipe(autoprefixer({
@@ -28,7 +28,7 @@ function styles() {
         .pipe(sass({outputStyle: 'expanded'}))
         .pipe(gulp.dest('public/css'))
         .pipe(sass({outputStyle: 'compressed'}))
-        .pipe(rename('styles.min.css'))
+        .pipe(rename('sassy.min.css'))
         .pipe(gulp.dest('public/css'))
         .pipe(connect.reload())
     );
@@ -36,11 +36,11 @@ function styles() {
 
 function scripts() {
     return (
-        gulp.src('src/js/scripts.js')
+        gulp.src('src/js/magic.js')
         .pipe(plumber())
         .pipe(gulp.dest('public/js'))
         .pipe(uglify())
-        .pipe(rename('scripts.min.js'))
+        .pipe(rename('magic.min.js'))
         .pipe(gulp.dest('public/js'))
         .pipe(gulp.dest('public/js'))
         .pipe(connect.reload())
@@ -49,7 +49,7 @@ function scripts() {
 
 function html() {
     return (
-        gulp.src('src/*.html')
+        gulp.src('src/**/*.html')
         .pipe(plumber())
         .pipe(connect.reload())
     );
@@ -57,7 +57,7 @@ function html() {
 
 function views() {
     return (
-        gulp.src('src/**/*.pug')
+        gulp.src(['src/**/*.pug', '!src/includes/*', '!src/components/*'])
         .pipe(plumber())
         .pipe(pug({
             pretty: true
