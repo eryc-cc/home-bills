@@ -1,10 +1,10 @@
 doctype html
 html(lang="en")
-    include includes/head.pug
+    include ../includes/head.pug
 
     body 
 
-        include components/page-header.pug
+        include ../components/page-header.pug
 
         main.main
             .wrapper
@@ -28,18 +28,18 @@ html(lang="en")
                     section.tx-list
 
                         //- Repeat with Data
-                        include components/tx-preview.pug
-                        include components/tx-preview.pug
-                        include components/tx-preview.pug
-                        include components/tx-preview.pug
-                        include components/tx-preview.pug
+                        include ../components/tx-preview.pug
+                        include ../components/tx-preview.pug
+                        include ../components/tx-preview.pug
+                        include ../components/tx-preview.pug
+                        include ../components/tx-preview.pug
 
 
                 //- Overview Card
-                include components/overview.pug
+                include ../components/overview.pug
 
 
-        include components/add-bills.pug
+        include ../components/add-bills.pug
 
         
         script(src="/js/magic.js") 
