@@ -1,0 +1,43 @@
+section#addBillsModal.add-bills-modal
+    #closeModal.close-modal
+
+    form#addBills.add-bills
+        header.add-bills-header
+            h2.add-bills-heading
+
+            .add-bills-header-input
+                label.label(for="amount") Enter Amount
+                input.input.--huge(type="number", name="amount", min="0", step="any", placeholder="6,500", required)
+        
+        section.add-bills-details
+            .input-group
+                label.label(for="description") Description
+                textarea.textarea(name="description", required)
+            
+            .inputs-group
+                .input-group
+                    label.label(for="duedate") Due Date
+                    input.input(type="date", name="duedate", min="2022-01-01", required)
+                .input-group
+                    label.label(for="category") 
+                    select.select(name="category", required)
+                        option(value="") Select a category
+                        option(value="home") Home
+                        option(value="creditcard") Credit Card
+                        option(value="utility") Utility
+                        option(value="health") Health
+                        option(value="misc") Miscellaneous
+                .input-group
+                    label.label(for="spenders") 
+                    select.select(name="spenders", required)
+                        option(value="") Select a spender
+                        option(value="familyMember1") Name 1
+                        option(value="familyMember2") Name 2
+        
+        section.add-bills-actions
+            button#addSingleBill.submit.--ghost(type="submit")
+                | Add this bill and close
+                kbd ⌘↵
+            button#addMultipleBills.submit(type="submit")
+                | Add more bills
+                kbd ↵
