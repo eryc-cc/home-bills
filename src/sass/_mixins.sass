@@ -1,4 +1,4 @@
-@mixin font($size, $color, $line-height, $alignment)
+@mixin font($size, $color: false, $line-height: false, $alignment: false)
     @if $size
         font-size: var(#{$size})
     @if $line-height
@@ -7,3 +7,4 @@
         text-align: #{$alignment}
     @if $color
         color: var(#{$color})
+
