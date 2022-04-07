@@ -1,0 +1,39 @@
+// Main
+.main
+    display: flex
+    
+    width: 100%
+
+    margin-top: 4rem
+    padding: 0 5%
+
+    .wrapper
+        display: flex
+        justify-content: space-between
+
+
+// Section: Bills
+.bills 
+    @include column("half")
+    
+    &-header
+        display: flex
+        justify-content: space-between
+        align-items: center
+
+        &-heading
+            @include font("--big")
+
+        &-actions
+            display: flex
+            align-items: center
+
+            &--filter
+                // nothing
+            &--add
+                // nothing
+
+
+// Section Overview
+.overview
+    @include column("half")
