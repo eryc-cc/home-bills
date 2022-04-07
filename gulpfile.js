@@ -49,15 +49,16 @@ function scripts() {
 
 function html() {
     return (
-        gulp.src('src/**/*.html')
+        gulp.src('src/views/html/**/*.html')
         .pipe(plumber())
+        .pipe(gulp.dest('public/'))
         .pipe(connect.reload())
     );
 }
 
 function views() {
     return (
-        gulp.src(['src/**/*.pug', '!src/includes/*', '!src/components/*'])
+        gulp.src('src/views/pages/**/*.pug')
         .pipe(plumber())
         .pipe(pug({
             pretty: true
@@ -68,10 +69,10 @@ function views() {
 }
 
 function watchTask(done) {
-    gulp.watch('src/*.html', html);
-    gulp.watch('src/sass/**/*.sass', styles);
+    gulp.watch('src/**/**/*.html', html);
+    gulp.watch('src/sass/**/**/*.sass', styles);
     gulp.watch('src/js/**/*.js', scripts);
-    gulp.watch('src/**/**/*.pug', views);
+    gulp.watch('src/views/**/**/*.pug', views);
     done();
 }
 
