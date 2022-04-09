@@ -1,0 +1,49 @@
+.overview
+    @include column("half")
+
+    padding: 1rem 1.5rem 1.125rem
+
+    border: 1px solid var(--dark-gray)
+    border-radius: .5rem
+
+    // Overview Header
+    &-header
+        display: flex
+        justify-content: space-between
+        align-items: center
+
+        @include font("--small", "--white")
+
+        &-heading
+            @include font(false, "--light-gray")
+
+    &-label
+        @include font("--small", "--light-gray")
+    
+    &-total
+        display: flex
+        flex-direction: column
+
+        margin-top: 2rem
+        padding-bottom: 1rem
+
+        border-bottom: 1px solid var(--dark-gray)
+
+        &-details
+            display: flex
+            align-items: center
+
+            margin-top: .25rem
+
+        &-amount
+            @include font("--big")
+        
+        &-percent
+            display: none // Remove later
+
+
+    &-spenders
+        // Nothing yet.
+
+    &-categories
+        // Nothing Yet
