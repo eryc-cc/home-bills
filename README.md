@@ -30,6 +30,7 @@
 - [ ] Open "Add Bills" pop-up.
     - [ ] Add "CMD + N" shortcut to add new bills
 - [ ] Data handling with localStorage (MVP).
+- [ ] Generate reports with JS.
 - [ ] Open Source it: add a license, make repo public, and document.
 
 **02. Better Data Management**
