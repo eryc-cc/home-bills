@@ -1,0 +1,83 @@
+.tx
+    display: flex
+    justify-content: space-between
+
+    width: 100%
+
+    padding: .75rem 0
+
+    &-block
+        display: flex
+        align-items: center
+
+        // width: 50%
+    
+    &-category
+        display: flex
+        justify-content: center
+        align-items: center
+
+        width: 2.5rem
+        height: 2.5rem
+
+        margin-right: .75rem
+
+        &.--home
+            // Nothing yet.
+                
+        &.--credit-card
+            // Nothing yet.
+        
+        &.--utilities
+            // Nothing yet.
+        
+        &.--health
+            // Nothing yet.
+        
+        &.--miscellaneous 
+            // Nothing yet.
+
+    &-details
+        display: flex
+
+        width: 100%
+
+        &.--desc
+            flex-direction: column
+            align-items: flex-start
+
+        &.--amount
+            justify-content: flex-end
+            align-items: center
+
+    &-title,
+    &-amount
+        @include font("--medium", "--white", 1)
+    
+    &-date
+        margin-top: .25rem
+
+        @include font("--small", "--light-gray", 1)
+    
+    &-status
+        margin-left: .5rem
+        padding: .25rem
+
+        @include font("--small")
+
+        border-radius: .25rem
+        background-color: var(--gray)
+
+        &.--due
+            color: var(--yellow)
+            background-color: var(--dark-yellow)
+        &.--late
+            color: var(--red)
+            background-color: var(--dark-red)
+        &.--paid
+            color: var(--green)
+            background-color: var(--dark-green)
+
+        
+        
+        
