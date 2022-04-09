@@ -21,17 +21,64 @@
         justify-content: space-between
         align-items: center
 
+        padding: 0 0 1rem
+
+        border-bottom: 1px solid var(--dark-gray)
+
         &-heading
             @include font("--big")
 
         &-actions
             display: flex
-            align-items: center
 
             &--filter
-                // nothing
+                display: flex
+                justify-content: center
+                align-items: center
+
+                padding: .25rem
+
+                border-radius: .25rem
+                background-color: var(--gray)
+
+                img
+                    width: 1.5rem
+                    height: 1.5rem
+
             &--add
-                // nothing
+                display: flex
+                justify-content: space-between
+                align-items: center
+
+                margin-left: .5rem
+                padding: .25rem
+                padding-left: .5rem
+
+                @include font("--small", "--white", 1)
+
+                border-radius: .25rem
+                background-color: var(--blue)
+                
+                .hotkey
+                    display: flex
+                    align-items: center
+
+                    margin-left: .5rem
+                    padding: .25rem
+
+                    border-radius: .25rem
+                    background-color: rgba(255,255,255,.2)
+
+        &-filters
+            display: none
+
+
+// Section: Transaction List
+.tx-list
+    display: flex
+    flex-direction: column
+
+    padding: 1.5rem 0
 
 
 // Section Overview
