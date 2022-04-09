@@ -36,6 +36,7 @@
 **02. Better Data Management**
 
 - [ ] Handle data with a local JSON file that you can store and sync with your iCloud, or GDrive.
+- [ ] Ability to visualize your bills from your computer, phone, or tablet.
 
 **03. Mobile App: I can see...**
 
