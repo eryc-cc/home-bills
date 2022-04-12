@@ -3,7 +3,7 @@ section#addBillsModal.add-bills-modal
 
     form#addBills.add-bills
         header.add-bills-header
-            h2.add-bills-heading
+            h2.add-bills-header-heading Add Bills
 
             .add-bills-header-input
                 label.label(for="amount") Enter Amount
@@ -17,9 +17,9 @@ section#addBillsModal.add-bills-modal
             .inputs-group
                 .input-group
                     label.label(for="duedate") Due Date
-                    input.input(type="date", name="duedate", min="2022-01-01", required)
+                    input.date(type="date", name="duedate", min="2022-01-01", required)
                 .input-group
-                    label.label(for="category") 
+                    label.label(for="category") Category
                     select.select(name="category", required)
                         option(value="") Select a category
                         option(value="home") Home
@@ -28,7 +28,7 @@ section#addBillsModal.add-bills-modal
                         option(value="health") Health
                         option(value="misc") Miscellaneous
                 .input-group
-                    label.label(for="spenders") 
+                    label.label(for="spenders") Spender
                     select.select(name="spenders", required)
                         option(value="") Select a spender
                         option(value="familyMember1") Name 1
@@ -36,7 +36,7 @@ section#addBillsModal.add-bills-modal
         
         section.add-bills-actions
             button#addSingleBill.submit.--ghost(type="submit")
-                | Add this bill and close
+                | Add single bill
                 kbd ⌘↵
             button#addMultipleBills.submit(type="submit")
                 | Add more bills
