@@ -4,23 +4,38 @@
     font-size: 16px
     font-weight: 500
 
+    // Typography
+    --small:    .875rem
+    --default:    1rem
+    --medium:   1.125rem
+    --big:      2rem
+    --huge:      4rem
+
     // Colors
-    --black:        #1C1E1F
-    --dark-gray:    #272D30
-    --gray:         #32393D
-    --light-gray:   #9AA5AB
-    --white:        #ffffff
-    --blue:         #0660E8
-    --green:        #32F98E
-    --dark-green:   #1C5536
-    --yellow:       #FAB609
-    --dark-yellow:  #5B4C26
-    --red:          #FD4869
-    --dark-red:     #53262E
+    --black:        hsl(200, 5%, 12%)
+    --dark-gray:    hsl(200, 10%, 17%)
+    --gray:         hsl(202, 10%, 22%)
+    --light-gray:   hsl(201, 9%, 64%)
+    --faded-white:  hsl(210, 12%, 93%)
+    --white:        hsl(0, 0%, 100%)
+    --blue:         hsl(216, 95%, 47%)
+    --blue-a20:     hsla(216, 95%, 47%, 20%)
+    --green:        hsl(148, 94%, 59%)
+    --dark-green:   hsl(147, 50%, 22%)
+    --yellow:       hsl(43, 96%, 51%)
+    --dark-yellow:  hsl(43, 41%, 25%)
+    --red:          hsl(349, 98%, 64%)
+    --dark-red:     hsl(349, 37%, 24%)
     
+*
+    font-family: inherit
+    font-weight: inherit
 
 body
     font-size: 1rem
+
+    color: var(--white)
+    background-color: var(--black)
 
 .wrapper
     max-width: 45.5rem

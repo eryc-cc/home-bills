@@ -5,6 +5,7 @@ var gulp    = require('gulp'),
     plumber = require('gulp-plumber'),
     rename  = require('gulp-rename'),
     uglify  = require('gulp-uglify'),
+    clean   = require('gulp-clean'),
     autoprefixer = require('gulp-autoprefixer');
 
 function reload(done) {
@@ -16,10 +17,20 @@ function reload(done) {
     done();
 }
 
+function cleanPublic() {
+    return (
+        gulp.src('public/*', {read: false})
+        .pipe(plumber())
+        .pipe(clean())
+    );
+}
+
 function styles() {
     return (
         gulp.src('src/sass/sassy.sass')
         .pipe(plumber())
+        .pipe(sass().on('error', sass.logError))
+        .pipe(gulp.dest('.tmp/sass'))
         .pipe(sass())
         .pipe(autoprefixer({
             overrideBrowserslist: ['last 3 versions'],
@@ -36,12 +47,13 @@ function styles() {
 
 function scripts() {
     return (
-        gulp.src('src/js/magic.js')
+        gulp.src('src/js/*.js')
         .pipe(plumber())
         .pipe(gulp.dest('public/js'))
         .pipe(uglify())
-        .pipe(rename('magic.min.js'))
-        .pipe(gulp.dest('public/js'))
+        .pipe(rename((path) => {
+            path.extname = ".min.js";
+        }))
         .pipe(gulp.dest('public/js'))
         .pipe(connect.reload())
     );
@@ -68,6 +80,15 @@ function views() {
     )
 }
 
+function assets() {
+    return (
+        gulp.src(['src/assets/**/**/*'])
+        .pipe(plumber())
+        .pipe(gulp.dest('public/'))
+        .pipe(connect.reload())
+    )
+}
+
 function watchTask(done) {
     gulp.watch('src/**/**/*.html', html);
     gulp.watch('src/sass/**/**/*.sass', styles);
@@ -76,10 +97,12 @@ function watchTask(done) {
     done();
 }
 
-const watch = gulp.parallel(watchTask, reload);
-const build = gulp.series(gulp.parallel(styles, scripts, html, views));
+const build = gulp.series(cleanPublic, gulp.parallel(assets, styles, scripts, views));
+const watch = gulp.parallel(build, watchTask, reload);
 
 exports.reload = reload;
+exports.clean = cleanPublic;
+exports.assets = assets;
 exports.styles = styles;
 exports.scripts = scripts;
 exports.html = html;

@@ -1,11 +1,11 @@
-article.tx
-    section.tx-block
-        figure.tx-category
+mixin txPreview(desc, amount, category, date, status)
+    article.tx
+        figure.tx-category(class="--"+category)
             img.tx-category-img(src="", alt="TX Image")
-        section.tx-details
-            h3.tx-title Transaction Name
-            time.tx-date(datetime="2022-04-02") April 2nd, 2022
-    section.tx-block
-        section.tx-details.--right-align
-            .tx-amount R$ 20,000
-            .tx-status.--paid Paid
+        section.tx-block
+            section.tx-details.--desc
+                h3.tx-title= desc
+                time.tx-date(datetime="2022-04-02")= date
+            section.tx-details.--amount
+                .tx-amount R$ #{amount}
+                .tx-status(class="--"+status)= status

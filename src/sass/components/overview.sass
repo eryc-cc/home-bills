@@ -1,0 +1,96 @@
+.overview
+    @include column("half")
+
+    padding: 1rem 1.5rem 2rem
+
+    border: 1px solid var(--dark-gray)
+    border-radius: .5rem
+
+    // Overview Header
+    &-header
+        display: flex
+        justify-content: space-between
+        align-items: center
+
+        @include font("--small", "--white")
+
+        &-heading
+            @include font(false, "--light-gray")
+
+    &-label
+        @include font("--small", "--light-gray")
+    
+    &-total
+        display: flex
+        flex-direction: column
+
+        margin-top: 3rem
+        padding-bottom: 1rem
+
+        border-bottom: 1px solid var(--dark-gray)
+
+        &-details
+            display: flex
+            align-items: center
+
+            margin-top: .25rem
+
+        &-amount
+            @include font("--big")
+        
+        &-percent
+            display: none // Remove later
+
+
+    &-spenders,
+    &-categories
+        display: flex
+        flex-direction: column
+
+        margin-top: 1.5rem
+
+        &-list
+            display: flex
+            flex-direction: column
+
+            margin-top: .25rem
+
+    &-spender,
+    &-category
+        display: flex
+        justify-content: space-between
+
+        padding: .25rem 0
+
+        &-details
+            display: flex
+            align-items: center
+
+            &.--right-align
+                justify-content: flex-end
+
+        &-profile
+            position: relative
+            display: flex
+            overflow: hidden
+
+            width: 1.5rem
+            height: 1.5rem
+
+            border-radius: 50%
+            background-color: var(--light-gray)
+
+            &-img
+                width: 100%
+                height: 100%
+                object-fit: cover
+        
+        &-name,
+        &-amount
+            @include font("--small", "--white")
+        
+        &-name
+            margin-left: .5rem
+
+        &-percent
+            display: none

@@ -1,0 +1,45 @@
+.header
+    display: flex
+
+    width: 100%
+
+    padding: 0 5%
+
+    .wrapper
+        display: flex
+        justify-content: space-between
+        align-items: center
+        
+        padding: 1.5rem 0
+
+        border-bottom: 1px solid var(--dark-gray)
+
+    &-welcome
+        @include font("--small")
+
+        &-msg
+            // Nothing here
+        
+        &-date
+            margin-left: .5rem
+            
+            @include font(false, "--light-gray")
+
+.nav-links
+    display: flex
+    align-items: center
+
+.nav-link
+    padding: .125rem .5rem
+    
+    @include font("--small", "--light-gray")
+
+    transition: all 320ms ease
+
+    &:hover
+        color: var(--white)
+    
+.nav-copyright
+    margin-left: .5rem
+
+    @include font("--small", "--light-gray")

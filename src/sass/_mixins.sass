@@ -1,0 +1,27 @@
+@mixin font($size, $color: false, $line-height: false, $alignment: false)
+    @if $size
+        font-size: var(#{$size})
+    @if $line-height
+        line-height: $line-height
+    @if $alignment
+        text-align: #{$alignment}
+    @if $color
+        color: var(#{$color})
+
+@mixin column($size, $direction: false)
+    display: flex
+    @if $direction
+        flex-direction: #{$direction}
+    @else
+        flex-direction: column
+
+    @if $size == "full"
+        max-width: 100%
+    @if $size == "half"
+        max-width: 47%
+    @if $size == "third"
+        max-width: 31%
+    @if $size == "quarter"
+        max-width: 23%
+    
+    width: 100%
