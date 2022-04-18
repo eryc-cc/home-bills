@@ -128,7 +128,7 @@ function renderBills(bills) {
 
 function addToLocalStorage(bills) {
   localStorage.setItem('bills', JSON.stringify(bills));
-  renderBills(bills);
+  // renderBills(bills);
 }
 
 function getFromLocalStorage() {
@@ -136,7 +136,7 @@ function getFromLocalStorage() {
 
   if (reference) {
       bills = JSON.parse(reference);
-      renderBills(bills);
+      // renderBills(bills);
   }
 }
 

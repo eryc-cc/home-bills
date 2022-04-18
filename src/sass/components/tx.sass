@@ -1,7 +1,13 @@
 .tx
     display: flex
+    flex-direction: column
 
     width: 100%
+
+    &-wrapper
+        display: flex
+        
+        width: 100%
 
     &-category
         display: flex
@@ -90,6 +96,9 @@
         &.--paid
             color: var(--green)
             background-color: var(--dark-green)
+
+    &-actions
+        display: flex
 
         
         
