@@ -72,13 +72,39 @@
         &-profile
             position: relative
             display: flex
+            justify-content: center
+            align-items: center
             overflow: hidden
 
-            width: 1.5rem
-            height: 1.5rem
+            width: 1.75rem
+            height: 1.75rem
 
             border-radius: 50%
+        
             background-color: var(--light-gray)
+            background-size: 1.25rem
+            background-position: center
+            background-repeat: no-repeat
+
+            &.--home
+                background-color: var(--dark-yellow)
+                background-image: url('/icons/icon--home.svg')
+                    
+            &.--credit-card
+                background-color: var(--dark-blue)
+                background-image: url('/icons/icon--credit-card.svg')
+            
+            &.--utilities
+                background-color: var(--dark-green)
+                background-image: url('/icons/icon--utilities.svg')
+            
+            &.--health
+                background-color: var(--dark-red)
+                background-image: url('/icons/icon--health.svg')
+            
+            &.--miscellaneous 
+                background-color: var(--dark-sky)
+                background-image: url('/icons/icon--misc.svg')
 
             &-img
                 width: 100%

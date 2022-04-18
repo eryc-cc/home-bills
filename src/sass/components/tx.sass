@@ -10,25 +10,38 @@
         justify-content: center
         align-items: center
 
-        width: 2.5rem
+        width: 100%
+        max-width: 2.5rem
         height: 2.5rem
 
         margin-right: .75rem
 
+        border-radius: 50%
+        background-color: var(--gray)
+
+        background-size: 1.75rem
+        background-position: center
+        background-repeat: no-repeat
+
         &.--home
-            // Nothing yet.
+            background-color: var(--dark-yellow)
+            background-image: url('/icons/icon--home.svg')
                 
         &.--credit-card
-            // Nothing yet.
+            background-color: var(--dark-blue)
+            background-image: url('/icons/icon--credit-card.svg')
         
         &.--utilities
-            // Nothing yet.
+            background-color: var(--dark-green)
+            background-image: url('/icons/icon--utilities.svg')
         
         &.--health
-            // Nothing yet.
+            background-color: var(--dark-red)
+            background-image: url('/icons/icon--health.svg')
         
         &.--miscellaneous 
-            // Nothing yet.
+            background-color: var(--dark-sky)
+            background-image: url('/icons/icon--misc.svg')
     
     &-block
         display: flex
