@@ -150,3 +150,21 @@ currencyInput.formatToNumber();
 
 
 // HotKeys
+
+const hotKeys = (e) => {
+  let windowEvent = window.event ? window.event : e;
+
+  if (windowEvent.keyCode === 78 && e.ctrlKey) {
+    if (!modal.classList.contains('open')) {
+      toggleModal();
+    }
+  }
+
+  if (windowEvent.keyCode === 27) {
+    if (modal.classList.contains('open')) {
+      toggleModal();
+    }
+  }
+}
+
+document.onkeydown = hotKeys;
