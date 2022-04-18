@@ -150,7 +150,9 @@ function deleteBill(id) {
 
 getFromLocalStorage();
 
-// Modal
+//////////////////////////////// 
+// Modal Handlers
+//////////////////////////////// 
 
 const modal = document.getElementById('addBillsModal');
 const openModalButton = document.getElementById('openModal');
@@ -170,6 +172,9 @@ function toggleModal () {
 }
 
 
+//////////////////////////////// 
+// Format Currency Input
+//////////////////////////////// 
 const currencyArgs = {
   // afterFormat(e) { console.log('afterFormat', e); },
   allowNegative: false,
@@ -191,7 +196,9 @@ currencyInput.formatToNumber();
 
 
 
-// HotKeys
+//////////////////////////////// 
+// HotKey Handlers
+//////////////////////////////// 
 
 const hotKeys = (e) => {
   let windowEvent = window.event ? window.event : e;
