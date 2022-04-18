@@ -10,6 +10,14 @@
     border: none
     background: transparent
 
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button
+        -webkit-appearance: none
+        margin: 0
+
+    &[type=number]
+        -moz-appearance: textfield
+
     &.--huge
         @include font("--huge", "--white", 1, "center")
 
