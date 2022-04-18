@@ -1,116 +1,154 @@
-//////////
+//////////////////////////////// 
+// Add Bills
+//////////////////////////////// 
+const addBills = document.querySelector('.modal-wrapper .add-bills');
+const txList = document.querySelector('.tx-list');
 
-// const addBills = document.querySelector('.add-bill');
-// const billsList = document.querySelector('.bills-list');
-
-// let bills = [];
+let bills = [];
 
 
-// addBills.addEventListener('submit', (e) => {
-//     e.preventDefault();
+addBills.addEventListener('submit', (e) => {
+  e.preventDefault();
 
-//     const bill = {
-//         paid: false,
+  const bill = {
+    paid: false,
 
-//         desc: (document.querySelector('[name=name]')).value,
-//         amount: (document.querySelector('[name=amount]')).value,
-//         category: (document.querySelector('[name=category]')).value,
-//         duedate: (document.querySelector('[name=duedate]')).value
-//     };
+    desc: (document.querySelector('[name=description]')).value,
+    amount: (document.querySelector('[name=amount]')).value,
+    category: (document.querySelector('[name=category]')).value,
+    duedate: (document.querySelector('[name=duedate]')).value,
+    spender: (document.querySelector('[name=spenders]')).value
+  };
 
-//     addBill(bill);
-//     addBills.reset();
-// });
+  console.log(bill);
 
-// function addBill(details) {
-//     if (details !== '') {
-//         const bill = {
-//             desc: details.desc,
-//             amount: details.amount,
-//             category: details.category,
-//             duedate: details.duedate,
-//             paid: details.paid,
-//             key: Date.now()
-//         };
+  addBill(bill);
+  addBills.reset();
+});
 
-//         bills.push(bill);
-//         addToLocalStorage(bills);
-//     }
-// }
+function addBill(details) {
+  if (details !== '') {
+    const bill = {
+        desc: details.desc,
+        amount: details.amount,
+        category: details.category,
+        duedate: details.duedate,
+        spender: details.spender,
+        paid: details.paid,
+        key: Date.now()
+    };
 
-// function renderBills(bills) {
-//     billsList.innerHTML = '';
+    bills.push(bill);
+    addToLocalStorage(bills);
+  }
+}
 
-//     bills.forEach(bill => {
-        
-//         // Create Bill Wrapper
-//         const wrapper = document.createElement('div');
-//         wrapper.setAttribute('class', 'bill ' + (bill.paid ? 'paid' : 'due'));
-//         wrapper.setAttribute('data-key', bill.key);
+function renderBills(bills) {
+  txList.innerHTML = '';
 
-//         wrapper.innerHTML = `
-//             <div class="bill-details">
-//                 <div class="bill-name">
-//                     ${bill.desc}
-//                 </div>
-//                 <div class="bill-category">
-//                     ${bill.category}
-//                 </div>
-//             </div>
-//             <div class="bill-details">
-//                 <div class="bill-amount">
-//                     ${bill.amount}
-//                 </div>
-//                 <div class="bill-duedate">
-//                     ${bill.duedate}
-//                 </div>
-//             </div>
-//             <div class="bill-actions">
-//                 <button class="edit-button">Edit</button>
-//                 <button class="delete-button">Delete</button>
-//             </div>
-//         `;
+  bills.forEach(bill => {
+    // Create TX Wrapper
+    const wrapper = document.createElement('article');
+    wrapper.classList.add('tx');
+    wrapper.classList.add(bill.paid ? '--paid' : '--due');
+    wrapper.setAttribute('data-key', bill.key);
 
-//         billsList.append(wrapper);
-//     });
-// }
+    // Create Meta Information Elements
+    const category = document.createElement('div');
+    category.classList.add('tx-category');
+    category.classList.add(bill.category ? '--' + bill.category : '');
+    // Append Category to Wrapper
+    wrapper.append(category);
 
-// function addToLocalStorage(bills) {
-//     localStorage.setItem('bills', JSON.stringify(bills));
-//     renderBills(bills);
-// }
+    // Create Block with Meta information
+    const block = document.createElement('section');
+    block.classList.add('tx-block');
+    // Append Block to Wrapper
+    wrapper.append(block);
 
-// function getFromLocalStorage() {
-//     const reference = localStorage.getItem('bills');
+    // Create Description Details
+    const descDetails = document.createElement('section');
+    descDetails.classList.add('tx-details');
+    descDetails.classList.add('--desc');
+    // Append Description Details to Block
+    block.append(descDetails);
 
-//     if (reference) {
-//         bills = JSON.parse(reference);
-//         renderBills(bills);
-//     }
-// }
-
-// function deleteBill(id) {
-//     bills = bills.filter((bill) => {
-//         return bill.key != id;
-//     });
-
-//     addToLocalStorage(bills);
-// }
-
-// getFromLocalStorage();
-
-// billsList.addEventListener('click', (e) => {
-
-//     if (e.target.classList.contains('delete-button')) {
-//         deleteBill(e.target.parentElement.parentElement.getAttribute('data-key'));
-//     }
+    // Create Title
+    const title = document.createElement('h3');
+    title.classList.add('tx-title');
+    title.append(bill.desc);
+    // Append Title to Description Details
+    descDetails.append(title);
     
-//     if (e.target.classList.contains('edit-button')) {
-//         console.log('is edit');
-//     }
+    // Create Date
+    const date = document.createElement('time');
+    date.classList.add('tx-date');
+    date.setAttribute('datetime', bill.duedate);
+    date.append(moment(bill.duedate).format("MMM DD, YYYY"));
+    // Append Date to Description Details
+    descDetails.append(date);
+    
+    // Create Amount Details
+    const amountDetails = document.createElement('section');
+    amountDetails.classList.add('tx-details');
+    amountDetails.classList.add('--amount');
+    // Append Title to Description Details
+    block.append(amountDetails);
 
-// })
+    // Create Amount
+    const amount = document.createElement('span');
+    amount.classList.add('tx-amount');
+    amount.append(bill.amount);
+    // Append Amount to Description Details
+    amountDetails.append(amount);
+    
+    // Create Status
+    const status = document.createElement('span');
+    status.classList.add('tx-status');
 
+    if (!bill.paid) {
+      status.classList.add('--due');
+      status.innerText = "Due";
+    } else {
+      status.classList.add('--paid');
+      status.innerText = "Paid";
+    }
+
+    // Append Status to Description Details
+    amountDetails.append(status);
+    
+    
+    // Append Wrapper to Transaction List
+    txList.append(wrapper);
+
+    console.log(wrapper);
+
+  });
+}
+
+function addToLocalStorage(bills) {
+  localStorage.setItem('bills', JSON.stringify(bills));
+  renderBills(bills);
+}
+
+function getFromLocalStorage() {
+  const reference = localStorage.getItem('bills');
+
+  if (reference) {
+      bills = JSON.parse(reference);
+      renderBills(bills);
+  }
+}
+
+function deleteBill(id) {
+  bills = bills.filter((bill) => {
+      return bill.key != id;
+  });
+
+  addToLocalStorage(bills);
+}
+
+getFromLocalStorage();
 
 // Modal
 
