@@ -162,6 +162,8 @@ const hotKeys = (e) => {
 
   if (windowEvent.keyCode === 27) {
     if (modal.classList.contains('open')) {
+      // Add conditional:
+      // If inputs are filled, ask if you want to clear changes
       toggleModal();
     }
   }
