@@ -129,20 +129,24 @@ console.log(modal);
 
 
 const currencyArgs = {
-    afterFormat(e) { console.log('afterFormat', e); },
-    allowNegative: false,
-    beforeFormat(e) { console.log('beforeFormat', e); },
-    negativeSignAfter: false,
-    prefix: 'R$',
-    suffix: '',
-    fixed: true,
-    fractionDigits: 2,
-    decimalSeparator: '.',
-    thousandsSeparator: ',',
-    cursor: 'end'
-  };
+  // afterFormat(e) { console.log('afterFormat', e); },
+  allowNegative: false,
+  // beforeFormat(e) { console.log('beforeFormat', e); },
+  negativeSignAfter: false,
+  prefix: 'R$',
+  suffix: '',
+  fixed: true,
+  fractionDigits: 2,
+  decimalSeparator: '.',
+  thousandsSeparator: ',',
+  cursor: 'end'
+};
 
-  // Select the element
-  const currencyInput = SimpleMaskMoney.setMask('input[name="amount"]', currencyArgs);
-  // Convert the input value to a number, which you can save e.g. to a database:
-  input.formatToNumber();
+// Select the element
+const currencyInput = SimpleMaskMoney.setMask('input[name="amount"]', currencyArgs);
+// Convert the input value to a number, which you can save e.g. to a database:
+currencyInput.formatToNumber();
+
+
+
+// HotKeys
