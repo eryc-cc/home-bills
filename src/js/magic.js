@@ -112,6 +112,22 @@
 // })
 
 
+// Modal
+
+const modal = document.getElementById('addBillsModal');
+const openModalButton = document.getElementById('openModal');
+const closeModalArea = document.getElementById('closeModal');
+
+openModalButton.addEventListener('click', toggleModal);
+closeModalArea.addEventListener('click', toggleModal);
+
+function toggleModal () {
+  modal.classList.toggle('open');
+}
+
+console.log(modal);
+
+
 const currencyArgs = {
     afterFormat(e) { console.log('afterFormat', e); },
     allowNegative: false,
