@@ -160,10 +160,14 @@ openModalButton.addEventListener('click', toggleModal);
 closeModalArea.addEventListener('click', toggleModal);
 
 function toggleModal () {
-  modal.classList.toggle('open');
-}
+  const firstInput = document.querySelector('.modal-wrapper .input[name="amount"]');
 
-console.log(modal);
+  modal.classList.toggle('open');
+
+  if (modal.classList.contains('open')) {
+    firstInput.focus();
+  }
+}
 
 
 const currencyArgs = {
