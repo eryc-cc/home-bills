@@ -1,7 +1,8 @@
 mixin txPreview(desc, amount, category, date, status)
     article.tx
-        figure.tx-category(class="--"+category)
-            img.tx-category-img(src="", alt="TX Image")
+        .tx-category(class="--"+category)
+            //- img.tx-category-img(src="", alt="TX Image")
+
         section.tx-block
             section.tx-details.--desc
                 h3.tx-title= desc
