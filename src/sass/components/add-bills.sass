@@ -65,7 +65,23 @@
                 opacity: .7
 
             .input
+                width: 100%
+
                 margin-top: .5rem
+
+                border-radius: .5rem
+                background-color: transparent
+
+                &::placeholder
+                    color: var(--white)
+                    opacity: .6
+                
+                &:focus
+                    background-color: rgba(255, 255, 255, .2)
+                    
+                &:focus-visible
+                    outline: none
+
 
     &-details
         display: flex
