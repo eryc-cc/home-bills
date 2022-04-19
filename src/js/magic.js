@@ -20,8 +20,6 @@ addBills.addEventListener('submit', (e) => {
     spender: (document.querySelector('[name=spenders]')).value
   };
 
-  console.log(bill);
-
   addBill(bill);
   addBills.reset();
 });
@@ -201,8 +199,6 @@ function renderBills(bills) {
     
     // Append Wrapper to Transaction List
     txList.append(tx);
-
-    console.log(tx);
 
     tx.addEventListener('click', toggleTx);
   });
