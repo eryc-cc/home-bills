@@ -57,3 +57,31 @@ function updatePie(pie, percent) {
     // Returns the <svg> element
     return pie;
 }
+
+/**
+ * getPies()
+ * 
+ * @returns Returns an Array with all the progress pies in the DOM.
+ */
+function getPies() {
+    // Gets all the pies and circles in the DOM
+    const pieBoxes = document.querySelectorAll('.pie-box');
+    const pieCircles = document.querySelectorAll('.pie-circle');
+    
+    // Creates an array of all Pies
+    const allPies = [];
+
+    pieBoxes.forEach((box, index) => {
+        // Adds the pie (<svg>) and circle (<circle>) to an object
+        const pieObject = {
+            box,
+            circle: pieCircles[index]
+        };
+        
+        // Pushes pieObject to the allPies array
+        allPies.push(pieObject);
+    });
+
+    // Returns allPies
+    return allPies;
+}
