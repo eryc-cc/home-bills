@@ -201,6 +201,7 @@ function renderBills(bills) {
 
     console.log(tx);
 
+    tx.addEventListener('click', toggleTx);
   });
 }
 
@@ -228,6 +229,19 @@ function deleteBill(id) {
 
 getFromLocalStorage();
 
+function toggleTx(e) {
+  const openTx = document.querySelector('.tx.--open');
+  
+  if (!!openTx && openTx !== this) {
+    openTx.classList.remove('--open');
+  } 
+
+  const isActions = e.target.closest('.tx-actions');
+
+  if (!isActions) {
+    this.classList.toggle('--open'); 
+  }
+}
 //////////////////////////////// 
 // Modal Handlers
 //////////////////////////////// 
