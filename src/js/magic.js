@@ -195,6 +195,9 @@ function renderBills(bills) {
     const deleteButtonText = document.createElement('span');
     deleteButtonText.innerText = "Delete";
     deleteButton.append(deleteButtonText);
+    deleteButton.addEventListener('click', (e) => {
+      deleteBill(e.target.closest('.tx').getAttribute('data-key'));
+    });
     
     // Append Wrapper to Transaction List
     txList.append(tx);
