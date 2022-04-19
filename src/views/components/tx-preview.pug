@@ -13,7 +13,7 @@ mixin txPreview(desc, amount, category, date, status)
                     .tx-status(class="--"+status)= status
 
         section.tx-actions
-            .tx-action.swtich-wrapper
+            .tx-action.switch-wrapper
                 button.switch(type="button", role="switch", aria-checked="false", data-state="unchecked", value="paid")
                     span.switch-toggle(data-state="unchecked")
                 label.label Open
