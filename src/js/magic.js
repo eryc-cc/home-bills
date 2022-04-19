@@ -48,10 +48,14 @@ function renderBills(bills) {
 
   bills.forEach(bill => {
     // Create TX Wrapper
-    const wrapper = document.createElement('article');
-    wrapper.classList.add('tx');
-    wrapper.classList.add(bill.paid ? '--paid' : '--due');
-    wrapper.setAttribute('data-key', bill.key);
+    const tx = document.createElement('article');
+    tx.classList.add('tx');
+    tx.classList.add(bill.paid ? '--paid' : '--due');
+    tx.setAttribute('data-key', bill.key);
+    
+    const wrapper = document.createElement('section');
+    wrapper.classList.add('tx-wrapper');
+    tx.append(wrapper);
 
     // Create Meta Information Elements
     const category = document.createElement('div');
@@ -116,19 +120,91 @@ function renderBills(bills) {
 
     // Append Status to Description Details
     amountDetails.append(status);
+
+    // Create Actions
+    const actions = document.createElement('section');
+    actions.classList.add('tx-actions');
+    tx.append(actions);
+
+    // Create Switch
+    const switchWrapper = document.createElement('div');
+    switchWrapper.classList.add('tx-action');
+    switchWrapper.classList.add('switch-wrapper');
+    actions.append(switchWrapper);
     
+    const switchButton = document.createElement('button');
+    switchButton.classList.add('switch');
+    switchButton.setAttribute('type', 'button');
+    switchButton.setAttribute('role', 'switch');
+    switchButton.setAttribute('aria-checked', bill.paid ? "true" : "false");
+    switchButton.setAttribute('data-state', bill.paid ? "checked" : "unchecked");
+    switchButton.setAttribute('value', 'paid');
+    switchWrapper.append(switchButton);
+    
+    const switchToggle = document.createElement('span');
+    switchToggle.classList.add('switch-toggle');
+    switchButton.append(switchToggle);
+
+    const switchLabel = document.createElement('label');
+    switchLabel.classList.add('label');
+    switchLabel.innerText = bill.paid ? "Paid" : "Not Paid"
+    switchWrapper.append(switchLabel);
+
+    const switchCheckbox = document.createElement('input');
+    switchCheckbox.classList.add('switch-checkbox');
+    switchCheckbox.setAttribute('type', 'checkbox');
+    switchCheckbox.setAttribute('aria-hidden', 'true');
+    switchCheckbox.setAttribute('value', 'paid');
+    bill.paid ? switchCheckbox.setAttribute('checked', '') : null
+    switchWrapper.append(switchCheckbox);
+
+    // Create Edit Button
+    const editButton = document.createElement('button');
+    editButton.classList.add('tx-action');
+    editButton.classList.add('--edit');
+    actions.append(editButton);
+
+    const editButtonIcon = `
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="inherit" xmlns="http://www.w3.org/2000/svg">
+        <path d="M7 17.013L11.413 16.998L21.045 7.45802C21.423 7.08002 21.631 6.57802 21.631 6.04402C21.631 5.51002 21.423 5.00802 21.045 4.63002L19.459 3.04402C18.703 2.28802 17.384 2.29202 16.634 3.04102L7 12.583V17.013V17.013ZM18.045 4.45802L19.634 6.04102L18.037 7.62302L16.451 6.03802L18.045 4.45802ZM9 13.417L15.03 7.44402L16.616 9.03002L10.587 15.001L9 15.006V13.417Z" fill="inherit"/>
+        <path d="M5 21H19C20.103 21 21 20.103 21 19V10.332L19 12.332V19H8.158C8.132 19 8.105 19.01 8.079 19.01C8.046 19.01 8.013 19.001 7.979 19H5V5H11.847L13.847 3H5C3.897 3 3 3.897 3 5V19C3 20.103 3.897 21 5 21Z" fill="inherit"/>
+      </svg>
+    
+    `;
+    editButton.innerHTML += editButtonIcon;
+    
+    const editButtonText = document.createElement('span');
+    editButtonText.innerText = "Edit";
+    editButton.append(editButtonText);
+    
+    // Create Delete Button
+    const deleteButton = document.createElement('button');
+    deleteButton.classList.add('tx-action');
+    deleteButton.classList.add('--delete');
+    actions.append(deleteButton);
+    
+    const deleteButtonIcon = `
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="inherit" xmlns="http://www.w3.org/2000/svg">
+    <path d="M6 7H5V20C5 20.5304 5.21071 21.0391 5.58579 21.4142C5.96086 21.7893 6.46957 22 7 22H17C17.5304 22 18.0391 21.7893 18.4142 21.4142C18.7893 21.0391 19 20.5304 19 20V7H6ZM10 19H8V10H10V19ZM16 19H14V10H16V19ZM16.618 4L15 2H9L7.382 4H3V6H21V4H16.618Z" fill="inherit"/>
+    </svg>
+    `;
+    deleteButton.innerHTML += deleteButtonIcon;
+    
+    const deleteButtonText = document.createElement('span');
+    deleteButtonText.innerText = "Delete";
+    deleteButton.append(deleteButtonText);
     
     // Append Wrapper to Transaction List
-    txList.append(wrapper);
+    txList.append(tx);
 
-    console.log(wrapper);
+    console.log(tx);
 
   });
 }
 
 function addToLocalStorage(bills) {
   localStorage.setItem('bills', JSON.stringify(bills));
-  // renderBills(bills);
+  renderBills(bills);
 }
 
 function getFromLocalStorage() {
@@ -136,7 +212,7 @@ function getFromLocalStorage() {
 
   if (reference) {
       bills = JSON.parse(reference);
-      // renderBills(bills);
+      renderBills(bills);
   }
 }
 
