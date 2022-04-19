@@ -147,6 +147,7 @@ function renderBills(bills) {
 
     const switchLabel = document.createElement('label');
     switchLabel.classList.add('label');
+    switchLabel.setAttribute('for', 'tx-' + bill.key);
     switchLabel.innerText = bill.paid ? "Paid" : "Not Paid"
     switchWrapper.append(switchLabel);
 
@@ -155,6 +156,7 @@ function renderBills(bills) {
     switchCheckbox.setAttribute('type', 'checkbox');
     switchCheckbox.setAttribute('aria-hidden', 'true');
     switchCheckbox.setAttribute('value', 'paid');
+    switchCheckbox.setAttribute('name', 'tx-' + bill.key);
     bill.paid ? switchCheckbox.setAttribute('checked', '') : null
     switchWrapper.append(switchCheckbox);
 
