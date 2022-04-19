@@ -39,3 +39,21 @@ function createPie(key, percent) {
 
     return box;
 }
+
+/**
+ * updatePie() - Updates the percentage value of a progress pie.
+ * 
+ * @param {Object} pie - The SVG Element you want to update
+ * @param {Number} percent - The progress percentage you want to update. Any number from 0 to 100.
+ * @returns - The SVG element
+ */
+function updatePie(pie, percent) {
+    // Gets <circle> element
+    const pieCircle = pie.firstChild;
+    
+    // Updates attribute
+    pieCircle.setAttribute('stroke-dasharray', (percent * 31.4 / 100) + ' 31.4');
+
+    // Returns the <svg> element
+    return pie;
+}
