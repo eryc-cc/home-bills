@@ -135,6 +135,9 @@ function renderBills(bills) {
     switchWrapper.classList.add('tx-action');
     switchWrapper.classList.add('switch-wrapper');
     actions.append(switchWrapper);
+    switchWrapper.addEventListener('click', (e) => {
+      togglePaid(e.currentTarget);
+    });
     
     const switchButton = document.createElement('button');
     switchButton.classList.add('switch');
@@ -247,6 +250,25 @@ function toggleTx(e) {
     this.classList.toggle('--open'); 
   }
 }
+
+function togglePaid(el) {
+  const tx = el.closest('.tx').getAttribute('data-key');
+
+  bills = bills.map((bill) => {
+    if (bill.key == tx) {
+      if (bill.paid === false) {
+        bill.paid = true;
+      } else {
+        bill.paid = false;
+      }
+    }
+    return bill;
+  });
+
+  addToLocalStorage(bills);
+}
+
+
 //////////////////////////////// 
 // Modal Handlers
 //////////////////////////////// 
