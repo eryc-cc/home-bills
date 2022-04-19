@@ -87,3 +87,14 @@ function getPies() {
     // Returns allPies
     return allPies;
 }
+
+const pies = document.querySelectorAll('.pie');
+
+pies.forEach((pie, index) => {
+    const key = pie.getAttribute('data-key');
+    const pieEl = createPie(key, 32);
+
+    console.log(key, pieEl);
+
+    pie.append(pieEl);
+});
