@@ -1,0 +1,28 @@
+.pie
+    --size: 1.5rem // Default value. Bigger pie size is defined in overview.sass
+    --margin: .5rem // Default value. Different margins are defined in overview.sass
+    
+    position: relative
+
+    display: flex
+    justify-content: center
+    align-items: center
+
+    width: var(--size)
+    height: var(--size)
+
+    margin-left: var(--margin)
+    padding: calc(var(--size) / 12)
+
+    font-size: var(--size)
+
+    border-radius: 50%
+    border: calc(var(--size) / 12 / 1.125) solid var(--green)
+
+    svg
+        width: var(--size)
+        height: var(--size)
+
+        circle
+            fill: transparent
+            stroke: var(--green)
