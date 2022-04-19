@@ -40,6 +40,9 @@
 - [x] Design a friendly and minimal interface.
 - [x] Code interface for desktop.
 - [ ] Code the entire interface reponsively.
+- [ ] Add empty states
+    - [ ] Transaction List empty state
+    - [ ] Overview empty states
 - [x] Open "Add Bills" pop-up.
     - [x] Add "Control + N" hotkey to add new bills.
     - [x] Add "Escape" hotkey to close bills modal.
@@ -48,8 +51,9 @@
     - [x] Add Bills: to transaction list and localStorage
     - [x] Remove Bill
     - [x] Toggle Paid
+    - [ ] Edit Bill Values
 - [ ] Generate overview reports with JS.
-- [ ] Open Source it: add a license, make repo public, and document.
+- [x] Open Source it: add a license, make repo public, and document.
 
 **02. Better Data Management**
 
