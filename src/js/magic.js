@@ -109,8 +109,14 @@ function renderBills(bills) {
     status.classList.add('tx-status');
     
     if (!bill.paid) {
-      status.classList.add('--due');
-      status.innerText = "Due";
+      if (moment(new Date()).format("DDMMYYYY") > moment(bill.duedate).format('DDMMYYYY')) {
+
+        status.classList.add('--due');
+        status.innerText = "Due";
+      } else {
+        status.classList.add('--late');
+        status.innerText = "Late";
+      }
     } else {
       status.classList.add('--paid');
       status.innerText = "Paid";
