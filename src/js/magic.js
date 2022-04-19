@@ -32,7 +32,7 @@ function addBill(details) {
         category: details.category,
         duedate: details.duedate,
         spender: details.spender,
-        paid: !!details.paid ? details.paid : false,
+        paid: !details.paid ? false : true,
         key: Date.now()
     };
 
@@ -48,7 +48,7 @@ function renderBills(bills) {
     // Create TX Wrapper
     const tx = document.createElement('article');
     tx.classList.add('tx');
-    tx.classList.add(bill.paid ? '--paid' : '--due');
+    tx.classList.add(!!bill.paid ? '--paid' : '--due');
     tx.setAttribute('data-key', bill.key);
     
     const wrapper = document.createElement('section');
@@ -107,7 +107,7 @@ function renderBills(bills) {
     // Create Status
     const status = document.createElement('span');
     status.classList.add('tx-status');
-
+    
     if (!bill.paid) {
       status.classList.add('--due');
       status.innerText = "Due";
