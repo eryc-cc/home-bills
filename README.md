@@ -26,11 +26,17 @@
 **01. The Minimum Viable Code.**
 
 - [x] Design a friendly and minimal interface.
+- [x] Code interface for desktop.
 - [ ] Code the entire interface reponsively.
-- [ ] Open "Add Bills" pop-up.
-    - [ ] Add "CMD + N" shortcut to add new bills
+- [x] Open "Add Bills" pop-up.
+    - [x] Add "Control + N" hotkey to add new bills.
+    - [x] Add "Escape" hotkey to close bills modal.
+    - [ ] Add confirmation pop-up when closing modal and has data.
 - [ ] Data handling with localStorage (MVP).
-- [ ] Generate reports with JS.
+    - [x] Add Bills: to transaction list and localStorage
+    - [x] Remove Bill
+    - [x] Toggle Paid
+- [ ] Generate overview reports with JS.
 - [ ] Open Source it: add a license, make repo public, and document.
 
 **02. Better Data Management**
@@ -40,8 +46,8 @@
 
 **03. Mobile App: I can see...**
 
-- [ ] iOS App (read-only)
-- [ ] iOS Widgets for previewing data on the Home Page
+- [ ] iOS App (read-only).
+- [ ] iOS Widgets for previewing data on the Home Page.
 
 **04. Mobile App: Permission to edit.**
 

@@ -1,11 +1,28 @@
 mixin txPreview(desc, amount, category, date, status)
     article.tx
-        figure.tx-category(class="--"+category)
-            img.tx-category-img(src="", alt="TX Image")
-        section.tx-block
-            section.tx-details.--desc
-                h3.tx-title= desc
-                time.tx-date(datetime="2022-04-02")= date
-            section.tx-details.--amount
-                .tx-amount R$ #{amount}
-                .tx-status(class="--"+status)= status
+        section.tx-wrapper
+            .tx-category(class="--"+category)
+                //- img.tx-category-img(src="", alt="TX Image")
+
+            section.tx-block
+                section.tx-details.--desc
+                    h3.tx-title= desc
+                    time.tx-date(datetime="2022-04-02")= date
+                section.tx-details.--amount
+                    .tx-amount R$ #{amount}
+                    .tx-status(class="--"+status)= status
+
+        section.tx-actions
+            .tx-action.switch-wrapper
+                button.switch(type="button", role="switch", aria-checked="false", data-state="unchecked", value="paid")
+                    span.switch-toggle(data-state="unchecked")
+                label.label Not Paid
+                input.switch-checkbox(type="checkbox", aria-hidden="true", value="paid")
+
+            button.tx-action.--edit(type="button")
+                include ../../assets/icons/icon--edit.svg
+                span Edit
+            
+            button.tx-action.--delete(type="button")
+                include ../../assets/icons/icon--trash.svg
+                span Delete 

@@ -1,43 +1,44 @@
-section#addBillsModal.add-bills-modal
-    #closeModal.close-modal
+.modal-wrapper
+    section#addBillsModal.add-bills-modal
+        #closeModal.close-modal
 
-    form#addBills.add-bills
-        header.add-bills-header
-            h2.add-bills-header-heading Add Bills
+        form#addBills.add-bills
+            header.add-bills-header
+                h2.add-bills-header-heading Add Bills
 
-            .add-bills-header-input
-                label.label(for="amount") Enter Amount
-                input.input.--huge(type="text", name="amount", placeholder="6,500", inputmode="numeric", required)
-        
-        section.add-bills-details
-            .input-group
-                label.label(for="description") Description
-                textarea.textarea(name="description", required)
+                .add-bills-header-input
+                    label.label(for="amount") Enter Amount
+                    input.input.--huge(type="text", name="amount", placeholder="6,500", inputmode="numeric", required)
             
-            .inputs-group
+            section.add-bills-details
                 .input-group
-                    label.label(for="duedate") Due Date
-                    input.date(type="date", name="duedate", min="2022-01-01", required)
-                .input-group
-                    label.label(for="category") Category
-                    select.select(name="category", required)
-                        option(value="") Select a category
-                        option(value="home") Home
-                        option(value="creditcard") Credit Card
-                        option(value="utility") Utility
-                        option(value="health") Health
-                        option(value="misc") Miscellaneous
-                .input-group
-                    label.label(for="spenders") Spender
-                    select.select(name="spenders", required)
-                        option(value="") Select a spender
-                        option(value="familyMember1") Name 1
-                        option(value="familyMember2") Name 2
-        
-        section.add-bills-actions
-            button#addSingleBill.submit.--ghost(type="submit")
-                | Add single bill
-                kbd ⌘↵
-            button#addMultipleBills.submit(type="submit")
-                | Add more bills
-                kbd ↵
+                    label.label(for="description") Description
+                    textarea.textarea(name="description", required)
+                
+                .inputs-group
+                    .input-group
+                        label.label(for="duedate") Due Date
+                        input.date(type="date", name="duedate", min="2022-01-01", required)
+                    .input-group
+                        label.label(for="category") Category
+                        select.select(name="category", required)
+                            option(value="") Select a category
+                            option(value="home") Home
+                            option(value="credit-card") Credit Card
+                            option(value="utility") Utility
+                            option(value="health") Health
+                            option(value="misc") Miscellaneous
+                    .input-group
+                        label.label(for="spenders") Spender
+                        select.select(name="spenders", required)
+                            option(value="") Select a spender
+                            option(value="familyMember1") Name 1
+                            option(value="familyMember2") Name 2
+            
+            section.add-bills-actions
+                button#addSingleBill.submit.--ghost(type="submit")
+                    | Add single bill
+                    kbd ⌘↵
+                button#addMultipleBills.submit(type="submit")
+                    | Add more bills
+                    kbd ↵

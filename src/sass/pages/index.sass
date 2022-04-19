@@ -10,6 +10,7 @@
     .wrapper
         display: flex
         justify-content: space-between
+        align-items: flex-start
 
 
 // Section: Bills
@@ -41,9 +42,11 @@
                 border-radius: .25rem
                 background-color: var(--gray)
 
-                img
+                svg
                     width: 1.5rem
                     height: 1.5rem
+
+                    fill: var(--light-gray)
 
             &--add
                 display: flex
@@ -77,6 +80,7 @@
 .tx-list
     display: flex
     flex-direction: column
+    gap: 1.75rem
 
     padding: 1.5rem 0
 

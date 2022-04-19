@@ -1,34 +1,88 @@
 .tx
+    position: relative
+
     display: flex
+    flex-direction: column
 
     width: 100%
 
-    padding: .75rem 0
+    transition: all 320ms ease
+
+    & > section
+        position: relative
+        z-index: 2
+
+    &::before
+        content: ''
+
+        position: absolute
+        top: -1rem
+        right: -1rem
+        z-index: 1
+
+        width: calc(100% + 2rem)
+        height: calc(100% + 2rem)
+
+        border-radius: .5rem
+        border: 1px solid transparent
+
+        transition: all 320ms ease 
+
+    &:hover
+        &::before
+            border-color: var(--gray)
+
+    &.--open
+        margin: 1rem 0
+        
+        &::before
+            border-color: var(--gray)
+
+        & .tx-actions
+            display: flex
+
+    &-wrapper
+        display: flex
+        
+        width: 100%
 
     &-category
         display: flex
         justify-content: center
         align-items: center
 
-        width: 2.5rem
+        width: 100%
+        max-width: 2.5rem
         height: 2.5rem
 
         margin-right: .75rem
 
+        border-radius: 50%
+        background-color: var(--gray)
+
+        background-size: 1.75rem
+        background-position: center
+        background-repeat: no-repeat
+
         &.--home
-            // Nothing yet.
+            background-color: var(--dark-yellow)
+            background-image: url('/icons/icon--home.svg')
                 
         &.--credit-card
-            // Nothing yet.
+            background-color: var(--dark-blue)
+            background-image: url('/icons/icon--credit-card.svg')
         
         &.--utilities
-            // Nothing yet.
+            background-color: var(--dark-green)
+            background-image: url('/icons/icon--utilities.svg')
         
         &.--health
-            // Nothing yet.
+            background-color: var(--dark-red)
+            background-image: url('/icons/icon--health.svg')
         
         &.--miscellaneous 
-            // Nothing yet.
+            background-color: var(--dark-sky)
+            background-image: url('/icons/icon--misc.svg')
     
     &-block
         display: flex
@@ -63,9 +117,10 @@
     
     &-status
         margin-left: .5rem
-        padding: .25rem
+        padding: .25rem .375rem
 
         @include font("--small")
+        text-transform: capitalize
 
         border-radius: .25rem
         background-color: var(--gray)
@@ -80,6 +135,55 @@
             color: var(--green)
             background-color: var(--dark-green)
 
+    &-actions
+        display: none
+        gap: .5rem
+
+        margin-top: 1rem
+        padding-top: .75rem
+
+        border-top: 1px solid var(--gray)
+
+    &-action
+        cursor: pointer
+
+        display: flex
+        align-items: center
+
+        border-radius: .25rem
+
+        &.--edit,
+        &.--delete
+            padding: .125rem .5rem
+
+            border: 1px solid var(--gray)
+            background-color: transparent
+
+            transition: all 320ms ease
+
+            svg
+                width: 1.25rem
+                margin-right: .25rem
+        
+        &.--edit
+            color: var(--faded-white)
+            fill: var(--light-gray)
+
+            &:hover
+                border-color: var(--faded-white)
+                box-shadow: 0 0 .125rem var(--faded-white)
+        
+        &.--delete
+            color: var(--faded-white)
+            border-color: var(--dark-red)
+            fill: var(--red)
+
+            &:hover
+                border-color: var(--red)
+                box-shadow: 0 0 .125rem var(--red)
+
+        &.switch-wrapper
+            margin-right: auto
         
         
         

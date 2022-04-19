@@ -85,6 +85,47 @@
         border-color: var(--blue)
         background: transparent
 
+.switch
+    cursor: pointer
+
+    position: relative
+    display: flex
+    justify-content: flex-start
+    align-items: center
+
+    width: 2.675rem
+    height: 1.5rem
+
+    padding: .125rem
+
+    border-radius: 3rem
+    background-color: var(--gray)
+
+    transition: all 320ms ease
+
+    &[aria-checked="true"]
+        justify-content: flex-end
+        background-color: var(--blue)
+
+    &-toggle
+        display: block
+
+        width: 1.25rem
+        height: 1.25rem
+
+        border-radius: 2rem
+        background-color: var(--white)
+        box-shadow: 0 2px 2px var(--dark-gray-a20)
+
+    & ~ .label
+        margin-bottom: 0
+        margin-left: .5rem
+
+        color: var(--light-gray)
+    
+    & ~ .switch-checkbox
+        display: none
+
     
 // A group of than one Input.
 .inputs-group

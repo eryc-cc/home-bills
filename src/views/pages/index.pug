@@ -15,7 +15,8 @@ html(lang="en")
 
                         section.bills-header-actions
                             button#filter.bills-header-actions--filter
-                                img(src="", alt="Filter Bills")
+                                include ../../assets/icons/icon--filter.svg
+                                //- img(src="", alt="Filter Bills")
                             button#openModal.bills-header-actions--add
                                 | Add Bills 
                                 kbd.hotkey ⌘N
@@ -29,9 +30,9 @@ html(lang="en")
 
                         //- Repeat with Data
                         include ../components/tx-preview.pug
-                        +txPreview("Wise", "800", "Credit Card", "April 27th", "late")
-                        +txPreview("Bank of America", "12300", "Credit Card", "April 27th", "paid")
-                        +txPreview("C6", "6748", "Credit Card", "April 27th", "due")
+                        +txPreview("Wise", "800", "home", "April 27th", "late")
+                        +txPreview("Bank of America", "12300", "miscellaneous", "April 27th", "paid")
+                        +txPreview("C6", "6748", "utilities", "April 27th", "due")
 
 
                 //- Overview Card
@@ -41,5 +42,6 @@ html(lang="en")
         include ../components/add-bills.pug
 
         
+        script(src="/js/moment.js") 
         script(src="/js/simple-mask-input.js") 
         script(src="/js/magic.js") 
