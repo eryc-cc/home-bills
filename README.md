@@ -33,7 +33,10 @@
     - [x] Add "Escape" hotkey to close bills modal.
     - [ ] Add confirmation pop-up when closing modal and has data.
 - [ ] Data handling with localStorage (MVP).
-- [ ] Generate reports with JS.
+    - [x] Add Bills: to transaction list and localStorage
+    - [x] Remove Bill
+    - [x] Toggle Paid
+- [ ] Generate overview reports with JS.
 - [ ] Open Source it: add a license, make repo public, and document.
 
 **02. Better Data Management**
