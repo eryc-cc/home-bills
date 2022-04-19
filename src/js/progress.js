@@ -10,29 +10,31 @@ function createPie(key, percent) {
     /****************************
      * Creates SVG Viewbox
      ****************************/
-    const box = document.createElement('svg');
+    const box = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
     box.id = 'box' + key;
     box.className = 'pie-box';
     
     // Sets viewBox attributes
-    box.setAttribute('viewBox', '0 0 64 64');
+    box.setAttributeNS(null, 'viewBox', '0 0 20 20');
+    box.setAttributeNS(null, 'height', '20');
+    box.setAttributeNS(null, 'width', '20');
 
     
     /****************************
      * Creates SVG Circle
      ****************************/
-    const circle = document.createElement('circle');
-    circle.className = 'pie-circle';
+    const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    circle.classList.add('pie-circle');
     
     // Sets circle attributes
-    circle.setAttribute('r', '5');
-    circle.setAttribute('cx', '10');
-    circle.setAttribute('cy', '10');
-    circle.setAttribute('stroke-width', '10');
-    circle.setAttribute('transform', 'rotate(-90deg) translate(-20px)');
+    circle.setAttributeNS(null, 'r', '5');
+    circle.setAttributeNS(null, 'cx', '10');
+    circle.setAttributeNS(null, 'cy', '10');
 
     // Calculates progress percentage
-    circle.setAttribute('stroke-dasharray', (percent * 31.4 / 100) + ' 31.4');
+    circle.setAttributeNS(null, 'stroke-width', '10');
+    circle.setAttributeNS(null, 'stroke-dasharray', 'calc('+percent+' * 31.4 / 100) 31.4');
+    circle.setAttributeNS(null, 'style', "transform: rotate(-90deg) translate(-20px);");
 
     // Appends Circle to SVG
     box.append(circle);
@@ -52,7 +54,7 @@ function updatePie(pie, percent) {
     const pieCircle = pie.firstChild;
     
     // Updates attribute
-    pieCircle.setAttribute('stroke-dasharray', (percent * 31.4 / 100) + ' 31.4');
+    pieCircle.setAttributeNS(null, 'stroke-dasharray', 'calc('+percent+' * 31.4 / 100) 31.4');
 
     // Returns the <svg> element
     return pie;
