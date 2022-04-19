@@ -12,7 +12,7 @@ function createPie(key, percent) {
      ****************************/
     const box = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
     box.id = 'box' + key;
-    box.className = 'pie-box';
+    box.classList.add('pie-box');
     
     // Sets viewBox attributes
     box.setAttributeNS(null, 'viewBox', '0 0 20 20');
