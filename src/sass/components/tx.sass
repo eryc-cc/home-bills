@@ -1,8 +1,45 @@
 .tx
+    position: relative
+
     display: flex
     flex-direction: column
 
     width: 100%
+
+    transition: all 320ms ease
+
+    & > section
+        position: relative
+        z-index: 2
+
+    &::before
+        content: ''
+
+        position: absolute
+        top: -1rem
+        right: -1rem
+        z-index: 1
+
+        width: calc(100% + 2rem)
+        height: calc(100% + 2rem)
+
+        border-radius: .5rem
+        border: 1px solid transparent
+
+        transition: all 320ms ease 
+
+    &:hover
+        &::before
+            border-color: var(--gray)
+
+    &.--open
+        margin: 1rem 0
+        
+        &::before
+            border-color: var(--gray)
+
+        & .tx-actions
+            display: flex
 
     &-wrapper
         display: flex
