@@ -34,7 +34,7 @@ function addBill(details) {
         category: details.category,
         duedate: details.duedate,
         spender: details.spender,
-        paid: details.paid,
+        paid: !!details.paid ? details.paid : false,
         key: Date.now()
     };
 
