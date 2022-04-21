@@ -82,7 +82,31 @@ function getFromLocalStorage(key, array) {
     }
 }
 
-function togglePaid(el) {} // Updates bill to paid or unpaid
+/**
+ * Toggles Paid
+ * 
+ * @param {Event} e - Passes the event.
+ */
+function togglePaid(e) {
+    // Gets the key to the currentTarget
+    const key = e.currentTarget.closest('.tx').getAttribute('data-key');
+
+    // Will map through bills Array and update the current bill to paid or not paid.
+    bills = bills.map((bill) => {
+        if (bill.key == key) {
+            if (bill.paid === false) {
+                bill.paid = true;
+            } else {
+                bill.paid = false;
+            }
+        }
+        return bill;
+    });
+
+    // Adds new Array to localStorage
+    addToLocalStorage(bills);
+    // TODO: Update DOM
+}
 
 
 

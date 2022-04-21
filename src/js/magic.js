@@ -198,23 +198,6 @@ function renderBills(bills) {
 getFromLocalStorage();
 
 
-function togglePaid(el) {
-  const tx = el.closest('.tx').getAttribute('data-key');
-
-  bills = bills.map((bill) => {
-    if (bill.key == tx) {
-      if (bill.paid === false) {
-        bill.paid = true;
-      } else {
-        bill.paid = false;
-      }
-    }
-    return bill;
-  });
-
-  addToLocalStorage(bills);
-}
-
 
 //////////////////////////////// 
 // Format Currency Input
