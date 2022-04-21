@@ -6,6 +6,7 @@ var gulp    = require('gulp'),
     rename  = require('gulp-rename'),
     uglify  = require('gulp-uglify'),
     clean   = require('gulp-clean'),
+    concat  = require('gulp-concat'),
     autoprefixer = require('gulp-autoprefixer');
 
 function reload(done) {
@@ -45,10 +46,39 @@ function styles() {
     );
 }
 
+function libs() {
+    return (
+        gulp.src(['src/js/libs/*.js'])
+        .pipe(plumber())
+        .pipe(gulp.dest('public/js'))
+        .pipe(uglify())
+        .pipe(rename((path) => {
+            path.extname = ".min.js";
+        }))
+        .pipe(gulp.dest('public/js'))
+        .pipe(connect.reload())
+    );
+}
+
 function scripts() {
+    return (
+        gulp.src(['src/js/*.js'])
+        .pipe(plumber())
+        .pipe(gulp.dest('public/js/tmp'))
+        .pipe(uglify())
+        .pipe(rename((path) => {
+            path.extname = ".min.js";
+        }))
+        .pipe(gulp.dest('public/js/tmp'))
+        .pipe(connect.reload())
+    );
+}
+
+function allScripts() {
     return (
         gulp.src('src/js/*.js')
         .pipe(plumber())
+        .pipe(concat('m.js'))
         .pipe(gulp.dest('public/js'))
         .pipe(uglify())
         .pipe(rename((path) => {
@@ -92,19 +122,22 @@ function assets() {
 function watchTask(done) {
     gulp.watch('src/**/**/*.html', html);
     gulp.watch('src/sass/**/**/*.sass', styles);
-    gulp.watch('src/js/**/*.js', scripts);
+    gulp.watch('src/js/libs/**/*.js', libs);
+    gulp.watch('src/js/**/**/*.js', gulp.series(scripts, allScripts));
     gulp.watch('src/views/**/**/*.pug', views);
     done();
 }
 
-const build = gulp.series(cleanPublic, gulp.parallel(assets, styles, scripts, views));
+const build = gulp.series(cleanPublic, gulp.parallel(assets, styles, libs, scripts, allScripts, views));
 const watch = gulp.parallel(build, watchTask, reload);
 
 exports.reload = reload;
 exports.clean = cleanPublic;
 exports.assets = assets;
 exports.styles = styles;
+exports.libs = libs;
 exports.scripts = scripts;
+exports.allScripts = allScripts;
 exports.html = html;
 exports.views = views;
 exports.watch = watch;
