@@ -9,7 +9,16 @@ function addBill(data) {} // Adds bill: to DOM && localStorage
 
 function removeBill(bill) {} // Removes a specific bill: from DOM & localStorage
 
-function addToLocalStorage(bills) {} // Adds bills to localStorage
+
+/**
+ * Adds data to localStorage
+ * 
+ * @param {String} key - Defines the localStorage key
+ * @param {Object} data - Passes an object with the data
+ */
+function addToLocalStorage(key, data) {
+    localStorage.setItem(key, JSON.stringify(data));
+}
 
 function getFromLocalStorage() {} // Gets bills from localStorage
 

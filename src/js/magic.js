@@ -213,11 +213,6 @@ function renderBills(bills) {
   });
 }
 
-function addToLocalStorage(bills) {
-  localStorage.setItem('bills', JSON.stringify(bills));
-  renderBills(bills);
-}
-
 function getFromLocalStorage() {
   const reference = localStorage.getItem('bills');
 
