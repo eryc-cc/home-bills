@@ -16,7 +16,7 @@ let elementsDOM = [];
 
 
 /**************************************************
- * Functions
+ * Functions: Managing Data
  *************************************************/
 
 /**
@@ -70,6 +70,14 @@ function getFromLocalStorage(key, array) {
     }
 }
 
+function togglePaid(el) {} // Updates bill to paid or unpaid
+
+
+
+
+/**************************************************
+ * Functions: Manages DOM States
+ *************************************************/
 
 /**
  * Toggles transaction boxes open/closed.
@@ -92,10 +100,6 @@ function toggleTxOpen(e) {
         this.classList.toggle('--open');
     }
 }
-
-function togglePaid(el) {} // Updates bill to paid or unpaid
-
-
 
 /**
  * Creates a new HTML element
