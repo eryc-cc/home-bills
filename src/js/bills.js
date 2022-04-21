@@ -2,6 +2,7 @@
 const elementsDOM = [];
 
 
+function updateTxListDOM() {} // Updates the DOM tx list
 
 
 function addBill(data) {} // Adds bill: to DOM && localStorage
