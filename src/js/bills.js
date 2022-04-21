@@ -1,14 +1,50 @@
+/**************************************************
+ * Variables
+ *************************************************/
+
+// Gathers a list of bills
+let bills = [];
+
 // Gather all DOM elements in this array
-const elementsDOM = [];
+let elementsDOM = [];
 
 
-function updateTxListDOM() {} // Updates the DOM tx list
 
 
-function addBill(data) {} // Adds bill: to DOM && localStorage
+
+
+
+
+/**************************************************
+ * Functions
+ *************************************************/
+
+/**
+ * Adds a new bill
+ * 
+ * @param {Object} data - Passes the object from a form or manual input.
+ */
+function addBill(data) {
+    if (data !== '') {
+        const bill = {
+            amount: details.amount,
+            desc: details.desc,
+            category: details.category,
+            duedate: details.duedate,
+            spender: details.spender,
+            paid: !details.paid ? false : true,
+            key: Date.now()
+        };
+    }
+
+    bills.push(bill);
+    addToLocalStorage('bills', bills);
+    // TODO: Update DOM
+}
 
 function removeBill(bill) {} // Removes a specific bill: from DOM & localStorage
 
+function updateTxListDOM() {} // Updates the DOM tx list
 
 /**
  * Adds data to a specific key in localStorage

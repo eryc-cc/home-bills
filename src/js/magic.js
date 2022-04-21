@@ -4,8 +4,6 @@
 const addBills = document.querySelector('.modal-wrapper .add-bills');
 const txList = document.querySelector('.tx-list');
 
-let bills = [];
-
 
 addBills.addEventListener('submit', (e) => {
   e.preventDefault();
@@ -24,22 +22,6 @@ addBills.addEventListener('submit', (e) => {
   addBills.reset();
 });
 
-function addBill(details) {
-  if (details !== '') {
-    const bill = {
-        desc: details.desc,
-        amount: details.amount,
-        category: details.category,
-        duedate: details.duedate,
-        spender: details.spender,
-        paid: !details.paid ? false : true,
-        key: Date.now()
-    };
-
-    bills.push(bill);
-    addToLocalStorage(bills);
-  }
-}
 
 function renderBills(bills) {
   txList.innerHTML = '';
