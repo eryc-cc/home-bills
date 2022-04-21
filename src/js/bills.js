@@ -13,8 +13,27 @@ function addToLocalStorage(bills) {} // Adds bills to localStorage
 function getFromLocalStorage() {} // Gets bills from localStorage
 
 
+/**
+ * Toggles transaction boxes open/closed.
+ * 
+ * @param {Event} e - Passes the event information.
+ */
+function toggleTxOpen(e) {
+    // Finds a transaction that was already opened
+    const openTx = document.querySelector('.tx.--open');
 
-function toggleOpen(el, className = '--open') {} // Toggles open (anything).
+    // If openTx is not null and is not this event, then close it.
+    if (!!openTx && openTx !== this) {
+        openTx.classList.remove('--open');
+    }
+
+    // Finds whether the user is clicking the transaction's actions.
+    const isActions = e.target.closest('.tx-actions');
+    // If user is not clicking inside the actions div, then toggle it open or closed.
+    if (!isActions) {
+        this.classList.toggle('--open');
+    }
+}
 
 function togglePaid(el) {} // Updates bill to paid or unpaid
 
