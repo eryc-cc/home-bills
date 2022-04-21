@@ -11,7 +11,7 @@ function removeBill(bill) {} // Removes a specific bill: from DOM & localStorage
 
 
 /**
- * Adds data to localStorage
+ * Adds data to a specific key in localStorage
  * 
  * @param {String} key - Defines the localStorage key
  * @param {Object} data - Passes an object with the data
@@ -20,7 +20,19 @@ function addToLocalStorage(key, data) {
     localStorage.setItem(key, JSON.stringify(data));
 }
 
-function getFromLocalStorage() {} // Gets bills from localStorage
+/**
+ * Gets data from a specific key in localStorage
+ * 
+ * @param {String} key - Defines the localStorage key you want to grab data from
+ * @param {Array} array - Defines the Array you want to parse the data into
+ */
+function getFromLocalStorage(key, array) {
+    const ref = localStorage.getItem(key);
+
+    if (ref) {
+        array = JSON.parse(ref);
+    }
+}
 
 
 /**
