@@ -3,12 +3,15 @@
 <p align="center">Minimalistic bill tracker for those who despise tracking microtransactions.</p>
 
 <div align="center">
+
+
     
 [![Building](https://badgen.net/badge/icon/Actively%20Building%20?icon=bitcoin-lightning&label&color=purple)](https://github.com/pixelsbyeryc/home-bills)
 [![Open Source](https://badgen.net/badge/icon/Open%20Source%20?icon=github&label&color=black)](https://github.com/pixelsbyeryc/home-bills)
 [![Tip me](https://badgen.net/badge/icon/Tip%20me%20in%20ETH?icon=buymeacoffee&label&color=black)](https://etherscan.io/address/0x750889c704857f766420b14723Ecb8320EB8E9ab)
 
 ![Cover](cover.png)
+[Checkout the publicly available analytics](https://app.beampipe.io/domain/homebills.app)
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/0ba40158-ce2e-4ddf-8bf8-46cd57e50e9c/deploy-status)](https://app.netlify.com/sites/homebills/deploys)
     
