@@ -195,14 +195,6 @@ function renderBills(bills) {
   });
 }
 
-function deleteBill(id) {
-  bills = bills.filter((bill) => {
-      return bill.key != id;
-  });
-
-  addToLocalStorage(bills);
-}
-
 getFromLocalStorage();
 
 

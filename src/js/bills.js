@@ -42,7 +42,19 @@ function addBill(data) {
     // TODO: Update DOM
 }
 
-function removeBill(bill) {} // Removes a specific bill: from DOM & localStorage
+/**
+ * Removes a Bill
+ * 
+ * @param {String} billKey - Passes the key to the bill that'll be removed
+ */
+function removeBill(billKey) {
+    bills = bill.filter((bill) => {
+        return bill.key != billKey;
+    });
+    
+    addToLocalStorage(bills);
+    // TODO: Update DOM
+}
 
 function updateTxListDOM() {} // Updates the DOM tx list
 
