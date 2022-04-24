@@ -187,4 +187,24 @@ function newElement({ns = null, tag = 'div', classes = [], attrs = [], id = null
 
     // Returns the element
     return el;
+function setTxStatus(isPaid, date) {
+    const status = {
+        className: '',
+        text: ''
+    };
+
+    if (!isPaid) {
+        if (moment(new Date()).format("DDMMYYYY") > moment(date).format("DDMMYYYY")) {
+            status.className = '--due',
+            status.text = 'Due'
+        } else {
+            status.className = '--late',
+            status.text = 'Late'
+        }
+    } else {
+        status.className = '--paid',
+        status.text = 'Paid'
+    }
+
+    return status;
 }
