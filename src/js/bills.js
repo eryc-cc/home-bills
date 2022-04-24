@@ -299,3 +299,30 @@ function setTxStatus(isPaid, date) {
     // Returns the status Object
     return status;
 }
+
+function newTxSwitchButton(data, status) {
+    
+    // Create Paid Switch
+    const switchWrapper = newElement({classes: ['tx-action', 'switch-wrapper']});
+
+    // Switch Button
+    const switchButton = newElement({tag: 'button', classes: ['switch'], attrs: [{name: 'type', value: 'button'}, {name: 'role', value: 'switch'}, {name: 'aria-checked', value: data.paid ? 'true' : 'false'}, {name: 'data-state', value: data.paid ? "checked" : "unchecked"}, {name: 'value', value: 'Paid'}]});
+
+    // Switch Toggle
+    const switchToggle = newElement({tag: 'span', classes: ['switch-toggle']});
+
+    // Switch Label
+    const switchLabel = newElement({tag: 'label', classes: ['label'], attrs: [{name: 'for', value: 'tx-' + data.key}], innerText: data.paid ? "Paid" : "Not Paid"});
+
+    // Switch Checkbox
+    const switchCheckbox = newElement({tag: 'input', classes: ['switch-checkbox'], attrs: [{name: 'type', value:'checkbox'}, {name: 'aria-hidden', value: 'true'}, {name: 'value', value: 'paid'}, {name: 'name', value: 'tx-' + data.key}, {name: data.paid ? 'checked' : null, value: null}]})
+
+
+    // Append Buttons
+    switchWrapper.append(switchButton);
+    switchWrapper.append(switchLabel);
+    switchWrapper.append(switchCheckbox);
+    switchButton.append(switchToggle);
+    
+    return switchWrapper;
+}
