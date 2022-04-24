@@ -162,7 +162,7 @@ function toggleTxOpen(e) {
  * 
  * @returns {Object} the element you just created
  */
-function newElement({ns = null, tag = 'div', classes = [], attrs = [], id = null} = {}) {
+function newElement({ns = null, tag = 'div', classes = [], attrs = [], id = null, innerText = null} = {}) {
 
     // Creates the element
     const el = !!ns ? document.createElementNS(ns, tag) : document.createElement(tag);
@@ -182,8 +182,8 @@ function newElement({ns = null, tag = 'div', classes = [], attrs = [], id = null
         el.classList.add(item);
     });
 
-    // Pushes new Element to the elementsDOM Array
-    elementsDOM.push(el);
+    // Adds innerText
+    !!innerText ? el.innerText = innerText : innerText;
 
     // Returns the element
     return el;
