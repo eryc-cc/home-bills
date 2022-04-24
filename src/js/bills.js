@@ -25,21 +25,28 @@ let elementsDOM = [];
  * @param {Object} data - Passes the object from a form or manual input.
  */
 function addBill(data) {
+    
+    // If `data` isn't empty...
     if (data !== '') {
+        // Grab all the data passed and add it to an Object
         const bill = {
-            amount: details.amount,
-            desc: details.desc,
-            category: details.category,
-            duedate: details.duedate,
-            spender: details.spender,
-            paid: !details.paid ? false : true,
+            amount: data.amount,
+            desc: data.desc,
+            category: data.category,
+            duedate: data.duedate,
+            spender: data.spender,
+            paid: !data.paid ? false : true,
             key: Date.now()
         };
+        
+        // Push the object into the `bills` Array
+        bills.push(bill);
+        
+        // Add bills to localStorage
+        addToLocalStorage('bills', bills);
+        
+        // TODO: Update DOM
     }
-
-    bills.push(bill);
-    addToLocalStorage('bills', bills);
-    // TODO: Update DOM
 }
 
 /**
