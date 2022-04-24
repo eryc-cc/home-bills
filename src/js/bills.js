@@ -46,6 +46,7 @@ function addBill(data) {
         addToLocalStorage('bills', bills);
         
         // TODO: Update DOM
+        createTxElement(bill);
     }
 }
 
