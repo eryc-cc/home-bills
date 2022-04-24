@@ -267,7 +267,9 @@ function createTxElement(data) {
     amountDetails.append(status);
     actions.append(switchButton);
 
-    // const
+    // Add Events
+    tx.addEventListener('click', toggleTxOpen);
+    switchButton.addEventListener('click', togglePaid);
 
     // Pushes new Element to the elementsDOM Array
     elementsDOM.push(tx);
