@@ -1,4 +1,17 @@
 /**************************************************
+ * Set data when page opens
+ *************************************************/
+
+// Add local data into bills variable
+bills = getFromLocalStorage('bills', bills);
+
+//////
+// Check if bills has anything
+console.log(bills, bills[0]);
+
+
+
+/**************************************************
  * DOM Elements
  *************************************************/
 
@@ -8,52 +21,22 @@ const addBillsForm = document.querySelector('.modal-wrapper .add-bills');
 // Transaction (Bills) List
 const txList = document.querySelector('.tx-list');
 
-
-
+//////
+// Check if elements are available
+// console.log(addBillsForm, txList);
 
 
 /**************************************************
  * DOM Events
  *************************************************/
 
-
 /**
- * Sends Form
- * 
- * TODO: Add multiple bills behavior — will keep modal open when adding new bills
- * TODO: Add single bill behavior — will add bill and close the modal
+ * Format Currency Input
  */
-addBillsForm.addEventListener('submit', (e) => {
-  e.preventDefault();
 
-  const bill = {
-    paid: false,
-    desc: (document.querySelector('[name=description]')).value,
-    amount: (document.querySelector('[name=amount]')).value,
-    category: (document.querySelector('[name=category]')).value,
-    duedate: (document.querySelector('[name=duedate]')).value,
-    spender: (document.querySelector('[name=spenders]')).value
-  };
-  
-  addBill(bill);
-
-  // Resets form
-  addBills.reset();
-
-  //TODO: Focus on amount
-});
-
-
-
-
-
-//////////////////////////////// 
-// Format Currency Input
-//////////////////////////////// 
+// Define arguments for SimpleMaskMoney.
 const currencyArgs = {
-  // afterFormat(e) { console.log('afterFormat', e); },
   allowNegative: false,
-  // beforeFormat(e) { console.log('beforeFormat', e); },
   negativeSignAfter: false,
   prefix: 'R$',
   suffix: '',
@@ -64,18 +47,46 @@ const currencyArgs = {
   cursor: 'end'
 };
 
-// Select the element
+// Select the element to set the mask on
 const currencyInput = SimpleMaskMoney.setMask('input[name="amount"]', currencyArgs);
+
 // Convert the input value to a number, which you can save e.g. to a database:
 currencyInput.formatToNumber();
 
 
+/**
+ * Sends Form
+ * 
+ * TODO: Add multiple bills behavior — will keep modal open when adding new bills
+ * TODO: Add single bill behavior — will add bill and close the modal
+ */
+addBillsForm.addEventListener('submit', (e) => {
+  // Prevent the default submit event
+  e.preventDefault();
 
-//////////////////////////////// 
-// HotKey Handlers
-//////////////////////////////// 
+  // Add form values to `bill` Object
+  const bill = {
+    desc: (document.querySelector(['[name="description"]'])).value,
+    amount: (document.querySelector(['[name="amount"]'])).value,
+    category: (document.querySelector(['[name="category"]'])).value,
+    duedate: (document.querySelector(['[name="duedate"]'])).value,
+    spender: (document.querySelector(['[name="spender"]'])).value,
+    
+    paid: false, 
+  };
 
-const hotKeys = (e) => {
+  // Check if `bill` is passing form data.
+  console.log(bill);
+
+  addBill(bill);
+});
+
+
+/**************************************************
+ * Hotkey Events
+ *************************************************/
+
+ const hotKeys = (e) => {
   let windowEvent = window.event ? window.event : e;
 
   if (windowEvent.keyCode === 78 && e.ctrlKey) {
