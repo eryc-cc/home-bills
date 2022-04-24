@@ -188,6 +188,22 @@ function newElement({ns = null, tag = 'div', classes = [], attrs = [], id = null
 
     // Returns the element
     return el;
+}
+
+function loadDataInDOM() {
+    bills = getFromLocalStorage('bills', bills);
+    
+    bills.forEach((bill, index) => {
+        createTxElement(bill);
+    });
+
+    elementsDOM.forEach((element, index) => {
+        txList.append(element);
+    });
+} // Loads all data in the DOM by calling other functions
+
+
+
 function createTxElement(data) {
     // Get the TX Status
     const getStatus = setTxStatus(data.paid, data.date);

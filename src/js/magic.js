@@ -30,6 +30,8 @@ const txList = document.querySelector('.tx-list');
  * DOM Events
  *************************************************/
 
+ loadDataInDOM();
+
 /**
  * Format Currency Input
  */
