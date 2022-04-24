@@ -217,7 +217,7 @@ function loadDataInDOM() {
  */
 function createTxElement(data) {
     // Get the TX Status
-    const getStatus = setTxStatus(data.paid, data.date);
+    const getStatus = setTxStatus(data.paid, data.duedate);
     
     // TX Element
     const tx = newElement({tag: 'article', classes: ['tx', getStatus.className], attrs: [{name:'data-key', value: data.key}], id: 'tx-' + data.key});
