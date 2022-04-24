@@ -187,6 +187,59 @@ function newElement({ns = null, tag = 'div', classes = [], attrs = [], id = null
 
     // Returns the element
     return el;
+function createTxElement(data) {
+    // Get the TX Status
+    const getStatus = setTxStatus(data.paid, data.date);
+    
+    // TX Element
+    const tx = newElement({tag: 'article', classes: ['tx', getStatus.className], attrs: [{name:'data-key', value: data.key}], id: 'tx-' + data.key});
+
+    // TX Wrapper
+    const wrapper = newElement({tag: 'section', classes: ['tx-wrapper']});
+
+    // TX Category
+    const category = newElement({classes: ['tx-category', data.category ? '--' + data.category : '']});
+
+    // TX Block
+    const block = newElement({tag: 'section', classes: ['tx-block']});
+
+    // TX Description Details
+    const descDetails = newElement({tag: 'section', classes: ['tx-details', '--desc']});
+
+    // TX Title
+    const title = newElement({tag: 'h3', classes: ['tx-title'], innerText: data.desc});
+
+    // TX Date
+    const date = newElement({tag: 'time', classes: ['tx-date'], attrs: [{name: 'datetime', value: data.duedate}], innerText: moment(data.duedate).format("MMM DD, YYYY")});
+
+    // TX Amount Details
+    const amountDetails = newElement({tag: 'section', classes: ['tx-details', '--amount']});
+
+    // TX Amount
+    const amount = newElement({tag: 'span', classes: ['tx-amount'], innerText: data.amount});
+
+    // TX Status
+    const status = newElement({tag: 'span', classes: ['tx-status', getStatus.className], innerText: getStatus.text});
+    
+    // Append elements
+    tx.append(wrapper);
+    wrapper.append(category);
+    wrapper.append(block);
+    block.append(descDetails);
+    block.append(amountDetails);
+    descDetails.append(title);
+    descDetails.append(date);
+    amountDetails.append(amount);
+    amountDetails.append(status);
+
+    // const
+
+    // Pushes new Element to the elementsDOM Array
+    elementsDOM.push(tx);
+
+    return tx;
+}
+
 function setTxStatus(isPaid, date) {
     const status = {
         className: '',
