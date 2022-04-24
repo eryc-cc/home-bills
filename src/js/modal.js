@@ -19,3 +19,6 @@ function toggleModal () {
     firstInput.focus();
   }
 }
+
+openModalButton.addEventListener('click', toggleModal);
+closeModalArea.addEventListener('click', toggleModal);
