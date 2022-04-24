@@ -248,9 +248,15 @@ function createTxElement(data) {
 
     // TX Status
     const status = newElement({tag: 'span', classes: ['tx-status', getStatus.className], innerText: getStatus.text});
+
+    // TX Status
+    const actions = newElement({tag: 'section', classes: ['tx-actions']})
+    
+    const switchButton = newTxSwitchButton(data, status);
     
     // Append elements
     tx.append(wrapper);
+    tx.append(actions);
     wrapper.append(category);
     wrapper.append(block);
     block.append(descDetails);
@@ -259,6 +265,7 @@ function createTxElement(data) {
     descDetails.append(date);
     amountDetails.append(amount);
     amountDetails.append(status);
+    actions.append(switchButton);
 
     // const
 
