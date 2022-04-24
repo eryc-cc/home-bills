@@ -79,14 +79,20 @@ function addToLocalStorage(key, data) {
  * Gets data from a specific key in localStorage
  * 
  * @param {String} key - Defines the localStorage key you want to grab data from
- * @param {Array} array - Defines the Array you want to parse the data into
+ * @param {Array} data - Defines the Array you want to parse the data into
+ * @returns {Array}
  */
-function getFromLocalStorage(key, array) {
+function getFromLocalStorage(key, data) {
+    // Use item key as a reference
     const ref = localStorage.getItem(key);
 
+    // If the item key exists, add it to the bills 
     if (ref) {
-        array = JSON.parse(ref);
+        data = JSON.parse(ref);
     }
+    
+    // Returns the 
+    return data;
 }
 
 /**
