@@ -190,6 +190,10 @@ function newElement({ns = null, tag = 'div', classes = [], attrs = [], id = null
     return el;
 }
 
+
+/**
+ * Loads data from localStorage, creates elements and append them to the DOM.
+ */
 function loadDataInDOM() {
     bills = getFromLocalStorage('bills', bills);
     
@@ -200,10 +204,17 @@ function loadDataInDOM() {
     elementsDOM.forEach((element, index) => {
         txList.append(element);
     });
-} // Loads all data in the DOM by calling other functions
+}
 
 
 
+
+/**
+ * Creates a Tx Element to append to the txList
+ * 
+ * @param {Object} data — Gets bill data to create a transaction element
+ * @returns
+ */
 function createTxElement(data) {
     // Get the TX Status
     const getStatus = setTxStatus(data.paid, data.date);
@@ -257,12 +268,21 @@ function createTxElement(data) {
     return tx;
 }
 
+/**
+ * Sets the tx status className and innerText
+ * 
+ * @param {Boolean} isPaid - Checks whether status should be paid or not
+ * @param {String} date - Passes the transaction date to calculate whether it's due or late
+ * @returns {Object} — Returns the status Object.
+ */
 function setTxStatus(isPaid, date) {
+    // Set the status Object
     const status = {
         className: '',
         text: ''
     };
 
+    // Set status data by calculating whether date is due, late, or paid.
     if (!isPaid) {
         if (moment(new Date()).format("DDMMYYYY") > moment(date).format("DDMMYYYY")) {
             status.className = '--due',
@@ -276,5 +296,6 @@ function setTxStatus(isPaid, date) {
         status.text = 'Paid'
     }
 
+    // Returns the status Object
     return status;
 }
