@@ -29,6 +29,10 @@
 
     visibility: hidden
     opacity: 0
+
+    @media screen and ( max-width: 560px )
+        align-items: flex-start
+        padding: 5%
     
     &.open
         display: flex
@@ -65,6 +69,8 @@
 
 
     &-header
+        position: relative
+
         display: flex
         flex-direction: column
 
@@ -96,6 +102,9 @@
 
                 border-radius: .5rem
                 background-color: transparent
+                
+                @media screen and ( max-width: 560px )
+                    font-size: 2.5rem
 
                 &::placeholder
                     color: var(--white)
@@ -121,3 +130,10 @@
         padding: 2rem 1.5rem 2rem
 
         border-top: 1px solid var(--faded-white)
+        
+        @media screen and ( max-width: 560px )
+            flex-direction: column
+            gap: 1rem
+            
+            .submit
+                width: 100%
