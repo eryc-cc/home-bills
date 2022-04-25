@@ -183,7 +183,7 @@ function newElement({ns = null, tag = 'div', classes = [], attrs = [], id = null
     // Adds attributes to the element
     // const attr = attr;
     attrs.forEach((attr, index) => {
-        el.setAttribute(attr.name, attr.value);
+        !!attr ? el.setAttribute(attr.name, attr.value) : null;
     });
 
     // Adds classes to the element
