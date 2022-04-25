@@ -261,7 +261,12 @@ function createTxElement(data) {
     // TX Status
     const actions = newElement({tag: 'section', classes: ['tx-actions']})
     
-    const switchButton = newTxSwitchButton(data, status);
+
+    const switchButton = newTxSwitchButton(data, data.paid);
+
+    const editButton = newTxButton(data.key, 'Edit', 'edit');
+
+    const deleteButton = newTxButton(data.key, 'Delete', 'delete');
     
     // Append elements
     tx.append(wrapper);
@@ -275,6 +280,8 @@ function createTxElement(data) {
     amountDetails.append(amount);
     amountDetails.append(status);
     actions.append(switchButton);
+    actions.append(editButton);
+    actions.append(deleteButton);
 
     // Add Events
     tx.addEventListener('click', toggleTxOpen);
