@@ -6,6 +6,7 @@
 const modal = document.getElementById('addBillsModal');
 const openModalButton = document.getElementById('openModal');
 const closeModalArea = document.getElementById('closeModal');
+const closeModalButton = document.getElementById('closeModalButton');
 
 /***********************************************
  * toggleModal() - Toggles modal on and off
@@ -22,3 +23,4 @@ function toggleModal () {
 
 openModalButton.addEventListener('click', toggleModal);
 closeModalArea.addEventListener('click', toggleModal);
+closeModalButton.addEventListener('click', toggleModal);

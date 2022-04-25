@@ -9,6 +9,17 @@
     border: 1px solid var(--dark-gray)
     border-radius: .5rem
 
+    @media screen and ( max-width: 815px )
+        position: relative
+        
+        @include column("full")
+        flex-direction: row
+        flex-wrap: wrap
+        justify-content: space-between
+
+    @media screen and ( max-width: 720px )
+        flex-direction: column
+
     // Overview Header
     &-header
         display: flex
@@ -16,6 +27,9 @@
         align-items: center
 
         @include font("--small", "--white")
+
+        @media screen and ( max-width: 815px )
+            width: 100%
 
         &-heading
             @include font(false, "--light-gray")
@@ -31,6 +45,9 @@
         padding-bottom: 1rem
 
         border-bottom: 1px solid var(--dark-gray)
+
+        @media screen and ( max-width: 815px )
+            width: 100%
 
         &-details
             display: flex
@@ -53,6 +70,12 @@
         flex-direction: column
 
         margin-top: 1.5rem
+
+        @media screen and ( max-width: 815px )
+            width: 46%
+
+        @media screen and ( max-width: 720px )
+            width: 100%
 
         &-list
             display: flex
