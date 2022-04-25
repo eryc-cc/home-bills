@@ -109,24 +109,35 @@ function getFromLocalStorage(key, data) {
  * @param {Event} e - Passes the event.
  */
 function togglePaid(e) {
+
+    // Gets current TX
+    const tx = e.currentTarget.closest('.tx');
+    
     // Gets the key to the currentTarget
-    const key = e.currentTarget.closest('.tx').getAttribute('data-key');
+    const key = parseInt(tx.getAttribute('data-key'));
+
+    const date = tx.querySelector('.tx-date').dateTime;
+
+    let status = {};
 
     // Will map through bills Array and update the current bill to paid or not paid.
     bills = bills.map((bill) => {
-        if (bill.key == key) {
+        if (bill.key === key) {
             if (bill.paid === false) {
                 bill.paid = true;
+                status = setTxStatus(bill.paid, date);
             } else {
                 bill.paid = false;
+                status = setTxStatus(bill.paid, date);
             }
         }
         return bill;
     });
 
     // Adds new Array to localStorage
-    addToLocalStorage(bills);
+    addToLocalStorage('bills', bills);
     // TODO: Update DOM
+    updateTxPaid(tx, status, date);
 }
 
 
@@ -135,6 +146,48 @@ function togglePaid(e) {
 /**************************************************
  * Functions: Manages DOM States
  *************************************************/
+
+function updateTxPaid(tx, status, date) {
+    const txStatus = tx.querySelector('.tx-status');
+    const txSwitch = tx.querySelector('.switch-wrapper');
+    const switchButton = txSwitch.querySelector('.switch');
+    const switchLabel = txSwitch.querySelector('.label');
+    const switchCheckbox = txSwitch.querySelector('.switch-checkbox');
+    const isPaid = status.className === '--paid' ? true : false;
+    
+    
+    
+    if (!isPaid) {
+        tx.classList.remove('--paid');
+        txStatus.classList.remove('--paid');
+        txStatus.classList.add(status.className);
+        txStatus.innerText = status.text;
+        tx.classList.add(status.className);
+        
+        switchButton.ariaChecked = "false";
+        switchButton.dataset.state = "unchecked";
+        switchButton.value = "due";
+        switchLabel.innerText = "Not Paid";
+        switchCheckbox.value = "due";
+    } else {
+        tx.classList.remove('--due');
+        tx.classList.remove('--late');
+        txStatus.classList.remove('--due');
+        txStatus.classList.remove('--late');
+        txStatus.classList.add(status.className);
+        txStatus.innerText = status.text;
+        tx.classList.add(status.className);
+
+        switchButton.ariaChecked = "true";
+        switchButton.dataset.state = "checked";
+        switchButton.value = "paid";
+        switchLabel.innerText = "Paid";
+        switchCheckbox.value = "paid";
+    }
+    
+    
+    // console.log('updated tx: ', tx, 'updated status: ', txStatus);
+}
 
 /**
  * Toggles transaction boxes open/closed.
