@@ -46,7 +46,7 @@ function addBill(data) {
         addToLocalStorage('bills', bills);
         
         // TODO: Update DOM
-        createTxElement(bill);
+        txList.append(createTxElement(bill));
     }
 }
 
@@ -72,8 +72,6 @@ function removeBill(billKey) {
         return element.id != 'tx-' + billKey;
     });
 }
-
-function updateTxListDOM() {} // Updates the DOM tx list
 
 /**
  * Adds data to a specific key in localStorage
