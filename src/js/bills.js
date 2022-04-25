@@ -250,7 +250,6 @@ function newElement({ns = null, tag = 'div', classes = [], attrs = [], id = null
     return el;
 }
 
-
 /**
  * Loads data from localStorage, creates elements and append them to the DOM.
  */
@@ -265,9 +264,6 @@ function loadDataInDOM() {
         txList.append(element);
     });
 }
-
-
-
 
 /**
  * Creates a Tx Element to append to the txList
@@ -344,6 +340,7 @@ function createTxElement(data) {
     // Pushes new Element to the elementsDOM Array
     elementsDOM.push(tx);
 
+    // Returns tx
     return tx;
 }
 
@@ -355,6 +352,7 @@ function createTxElement(data) {
  * @returns {Object} — Returns the status Object.
  */
 function setTxStatus(isPaid, date) {
+
     // Set the status Object
     const status = {
         className: '',
