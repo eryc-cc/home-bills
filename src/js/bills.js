@@ -195,6 +195,7 @@ function updateTxPaid(tx, status, date) {
  * @param {Event} e - Passes the event information.
  */
 function toggleTxOpen(e) {
+
     // Finds a transaction that was already opened
     const openTx = document.querySelector('.tx.--open');
 
@@ -203,11 +204,16 @@ function toggleTxOpen(e) {
         openTx.classList.remove('--open');
     }
 
-    // Finds whether the user is clicking the transaction's actions.
-    const isActions = e.target.closest('.tx-actions');
-    // If user is not clicking inside the actions div, then toggle it open or closed.
-    if (!isActions) {
-        this.classList.toggle('--open');
+    if (e.target !== undefined) {
+
+        // Finds whether the user is clicking the transaction's actions.
+        const isActions = e.target.closest('.tx-actions');
+
+        // If user is not clicking inside the actions div, then toggle it open or closed.
+        if (!isActions) {
+            // console.log('this', this);
+            this.classList.toggle('--open');
+        }
     }
 }
 

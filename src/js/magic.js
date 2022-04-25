@@ -83,6 +83,21 @@ addBillsForm.addEventListener('submit', (e) => {
   addBill(bill);
 });
 
+/******************************************************
+ * Close Options List when clicking outside.
+ */
+document.addEventListener('click', (e) => {
+  const txElements = document.querySelectorAll('.tx');
+
+  txElements.forEach((el, index) => {
+    const isTx = el.parentElement.contains(e.target);
+
+    if (!isTx) {
+      toggleTxOpen(el);
+    }
+  });
+});
+
 
 /**************************************************
  * Hotkey Events
