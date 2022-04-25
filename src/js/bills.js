@@ -334,9 +334,12 @@ function createTxElement(data) {
     actions.append(editButton);
     actions.append(deleteButton);
 
-    // Add Events
+    // Add Events to the Tx Actions
     tx.addEventListener('click', toggleTxOpen);
     switchButton.addEventListener('click', togglePaid);
+    deleteButton.addEventListener('click', (e) => {
+        removeBill(data.key);
+    });
 
     // Pushes new Element to the elementsDOM Array
     elementsDOM.push(tx);
