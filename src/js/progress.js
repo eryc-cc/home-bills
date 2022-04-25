@@ -94,7 +94,7 @@ pies.forEach((pie, index) => {
     const key = pie.getAttribute('data-key');
     const pieEl = createPie(key, 32);
 
-    console.log(key, pieEl);
+    // console.log(key, pieEl);
 
     pie.append(pieEl);
 });

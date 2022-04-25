@@ -104,8 +104,10 @@
     transition: all 320ms ease
 
     &[aria-checked="true"]
-        justify-content: flex-end
         background-color: var(--blue)
+
+        & .switch-toggle
+            margin-left: 50%
 
     &-toggle
         display: block
@@ -113,9 +115,13 @@
         width: 1.25rem
         height: 1.25rem
 
+        margin-left: 0%
+
         border-radius: 2rem
         background-color: var(--white)
         box-shadow: 0 2px 2px var(--dark-gray-a20)
+
+        transition: all 320ms ease
 
     & ~ .label
         margin-bottom: 0

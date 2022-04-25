@@ -30,9 +30,9 @@ html(lang="en")
 
                         //- Repeat with Data
                         include ../components/tx-preview.pug
-                        +txPreview("Wise", "800", "home", "April 27th", "late")
-                        +txPreview("Bank of America", "12300", "miscellaneous", "April 27th", "paid")
-                        +txPreview("C6", "6748", "utilities", "April 27th", "due")
+                        //- +txPreview("Wise", "800", "home", "April 27th", "late")
+                        //- +txPreview("Bank of America", "12300", "miscellaneous", "April 27th", "paid")
+                        //- +txPreview("C6", "6748", "utilities", "April 27th", "due")
 
 
                 //- Overview Card
@@ -42,7 +42,9 @@ html(lang="en")
         include ../components/add-bills.pug
 
         
-        script(src="/js/moment.js") 
-        script(src="/js/simple-mask-input.js") 
-        script(src="/js/progress.js") 
-        script(src="/js/magic.js") 
+        script(src="/js/moment.min.js") 
+        script(src="/js/mask.min.js") 
+        script(src="/js/tmp/modal.js") 
+        script(src="/js/tmp/bills.js") 
+        script(src="/js/tmp/progress.js") 
+        script(src="/js/tmp/magic.js") 
