@@ -56,12 +56,21 @@ function addBill(data) {
  * @param {String} billKey - Passes the key to the bill that'll be removed
  */
 function removeBill(billKey) {
-    bills = bill.filter((bill) => {
+
+    // Removes Bill from localStorage
+    bills = bills.filter((bill) => {
         return bill.key != billKey;
     });
+    addToLocalStorage('bills', bills);
+
+    // Removes element from DOM
+    const el = elementsDOM.find(element => element.dataset.key == billKey);
+    el.remove();
     
-    addToLocalStorage(bills);
-    // TODO: Update DOM
+    // Removes element from elementsDOM
+    elementsDOM = elementsDOM.filter((element) => {
+        return element.id != 'tx-' + billKey;
+    });
 }
 
 function updateTxListDOM() {} // Updates the DOM tx list
