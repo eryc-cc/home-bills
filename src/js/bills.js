@@ -302,7 +302,7 @@ function setTxStatus(isPaid, date) {
 
     // Set status data by calculating whether date is due, late, or paid.
     if (!isPaid) {
-        if (moment(new Date()).format("DDMMYYYY") > moment(date).format("DDMMYYYY")) {
+        if (moment(new Date()).format("YYMMDD") < moment(date).format("YYMMDD")) {
             status.className = '--due',
             status.text = 'Due'
         } else {
@@ -318,22 +318,22 @@ function setTxStatus(isPaid, date) {
     return status;
 }
 
-function newTxSwitchButton(data, status) {
+function newTxSwitchButton(data, isPaid) {
     
     // Create Paid Switch
     const switchWrapper = newElement({classes: ['tx-action', 'switch-wrapper']});
 
     // Switch Button
-    const switchButton = newElement({tag: 'button', classes: ['switch'], attrs: [{name: 'type', value: 'button'}, {name: 'role', value: 'switch'}, {name: 'aria-checked', value: data.paid ? 'true' : 'false'}, {name: 'data-state', value: data.paid ? "checked" : "unchecked"}, {name: 'value', value: 'Paid'}]});
+    const switchButton = newElement({tag: 'button', classes: ['switch'], attrs: [{name: 'type', value: 'button'}, {name: 'role', value: 'switch'}, {name: 'aria-checked', value: isPaid ? 'true' : 'false'}, {name: 'data-state', value: isPaid ? "checked" : "unchecked"}, {name: 'value', value: isPaid ? 'Paid' : 'Due'}]});
 
     // Switch Toggle
     const switchToggle = newElement({tag: 'span', classes: ['switch-toggle']});
 
     // Switch Label
-    const switchLabel = newElement({tag: 'label', classes: ['label'], attrs: [{name: 'for', value: 'tx-' + data.key}], innerText: data.paid ? "Paid" : "Not Paid"});
+    const switchLabel = newElement({tag: 'label', classes: ['label'], attrs: [{name: 'for', value: 'tx-' + data.key}], innerText: isPaid ? "Paid" : "Not Paid"});
 
     // Switch Checkbox
-    const switchCheckbox = newElement({tag: 'input', classes: ['switch-checkbox'], attrs: [{name: 'type', value:'checkbox'}, {name: 'aria-hidden', value: 'true'}, {name: 'value', value: 'paid'}, {name: 'name', value: 'tx-' + data.key}, {name: data.paid ? 'checked' : null, value: null}]})
+    const switchCheckbox = newElement({tag: 'input', classes: ['switch-checkbox'], attrs: [{name: 'type', value:'checkbox'}, {name: 'aria-hidden', value: 'true'}, {name: 'value', value: isPaid ? 'paid' : 'due'}, {name: 'name', value: 'tx-' + data.key}, isPaid ? {name: 'checked', value: ''} : null]})
 
 
     // Append Buttons
