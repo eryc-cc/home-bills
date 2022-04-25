@@ -39,14 +39,13 @@
 
 - [x] Design a friendly and minimal interface.
 - [x] Code interface for desktop.
-- [ ] Code the entire interface reponsively.
+- [x] Code the entire interface reponsively.
 - [ ] Add empty states
     - [ ] Transaction List empty state
     - [ ] Overview empty states
 - [x] Open "Add Bills" pop-up.
     - [x] Add "Control + N" hotkey to add new bills.
     - [x] Add "Escape" hotkey to close bills modal.
-    - [ ] Add confirmation pop-up when closing modal and has data.
 - [ ] Data handling with localStorage (MVP).
     - [x] Add Bills: to transaction list and localStorage
     - [x] Remove Bill
