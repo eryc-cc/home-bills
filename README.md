@@ -40,8 +40,8 @@
 - [x] Design a friendly and minimal interface.
 - [x] Code interface for desktop.
 - [x] Code the entire interface reponsively.
-- [ ] Add empty states
-    - [ ] Transaction List empty state
+- [ ] [Add empty states #13](https://github.com/pixelsbyeryc/home-bills/issues/13)
+    - [ ] Transaction List empty state 
     - [ ] Overview empty states
 - [x] Open "Add Bills" pop-up.
     - [x] Add "Control + N" hotkey to add new bills.
@@ -50,8 +50,10 @@
     - [x] Add Bills: to transaction list and localStorage
     - [x] Remove Bill
     - [x] Toggle Paid
-    - [ ] Edit Bill Values
+    - [ ] [Edit Bill Values #14](https://github.com/pixelsbyeryc/home-bills/issues/14)
 - [ ] Generate overview reports with JS.
+    - [ ] [Calculate data #9](https://github.com/pixelsbyeryc/home-bills/issues/9)
+    - [ ] [Render Overview Data #10](https://github.com/pixelsbyeryc/home-bills/issues/10)
 - [x] Open Source it: add a license, make repo public, and document.
 
 **02. Better Data Management**
