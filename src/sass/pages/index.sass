@@ -6,16 +6,27 @@
 
     margin-top: 4rem
     padding: 0 5%
+    
+    @media screen and ( max-width: 820px )
+        margin-top: 2rem
 
     .wrapper
         display: flex
         justify-content: space-between
         align-items: flex-start
 
+        @media screen and ( max-width: 820px )
+            flex-direction: column-reverse
+
 
 // Section: Bills
 .bills 
     @include column("half")
+
+    @media screen and ( max-width: 820px )
+        @include column("full")
+
+        margin-top: 3rem
     
     &-header
         display: flex
