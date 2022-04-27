@@ -162,3 +162,27 @@ let thisMonth = {
 	year: moment().year(),
 }
 
+/**
+ * Gets this month's bills
+ * You can store it in a variable and even save it to localStorage, 
+ * so you don't have to run this everytime.
+ * 
+ * @param {Object} thisMonth — Passes thisMonth Object with the month and year.
+ * @param {Object} bills — Passes the list of current bills.
+ * @returns {Object} — Returns an object with this month's bills.
+ */
+function getThisMonthsBills(thisMonth, bills) {
+	let thisMonthsBills = [];
+
+	bills.forEach((bill, index) => {
+		let billMonth = moment(bill.duedate).month(); // Month is zero indexed
+		let billYear = moment(bill.duedate).year();
+
+		if (thisMonth.month === billMonth && thisMonth.year === billYear) {
+			thisMonthsBills.push(bill);
+		}
+	});
+
+	return thisMonthsBills;
+}
+
