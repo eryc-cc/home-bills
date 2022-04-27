@@ -188,3 +188,15 @@ function getThisMonthsBills(thisMonth, bills) {
 
 // Stores this month's bills in a const.
 const thisMonthsBills = getThisMonthsBills(thisMonth, bills);
+
+/**
+ * Calculates this month's bills
+ * @param {Object} bills — Passes this month's bills from getThisMonthsBills()
+ */
+function calculateThisMonthsBills(bills) {
+	let dataOverview = [];
+
+	bills.forEach((bill, index) => {
+		
+	});
+}
