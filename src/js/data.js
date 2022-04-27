@@ -81,3 +81,73 @@ let bills = [
 // Gather all DOM elements in this array
 let elementsDOM = {};
 
+let overview = [];
+
+let overviewData = [
+	{
+		month: 01,
+		year: 2022,
+
+		total: {
+			amount: 20000,
+			amountFormatted: "R$ 20,000.00",
+			amountPaid: 8000,
+			percentPaid: 40,
+			amountDue: 12000,
+			percentDue: 60
+		},
+
+		spenders: [
+			{
+				key: 1651056656974,
+				amount: 16000,
+				amountFormatted: "R$ 16,000.00",
+				amountPaid: 8000,
+				percentPaid: 50,
+				amountDue: 8000,
+				percentDue: 50
+			},
+			{
+				key: 1651056657897,
+				amount: 4000,
+				amountFormatted: "R$ 4,000.00",
+				amountPaid: 0,
+				percentPaid: 0,
+				amountDue: 4000,
+				percentDue: 100
+			},
+		],
+		
+		categories: [
+			{
+				key: 1651056654886,
+				amount: 4000,
+				amountFormatted: "R$ 4,000.00",
+				amountPaid: 0,
+				percentPaid: 0,
+				amountDue: 4000,
+				percentDue: 100
+			},
+			{
+				key: 1651056656009,
+				amount: 4000,
+				amountFormatted: "R$ 4,000.00",
+				amountPaid: 0,
+				percentPaid: 0,
+				amountDue: 4000,
+				percentDue: 100
+			},
+		]
+	},
+];
+
+// console.group('Overview');
+// console.table(overview[0]);
+// console.group('Spenders');
+// console.table(overview[0].spenders[0]);
+// console.groupEnd();
+// console.group('Categories');
+// console.table(overview[0].categories[0]);
+// console.groupEnd();
+
+
