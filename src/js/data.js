@@ -151,3 +151,14 @@ let overviewData = [
 // console.groupEnd();
 
 
+
+/**************************************************
+ * Calculate Overview
+ *************************************************/
+
+// Sets this month and year in an object
+let thisMonth = {
+	month: moment().month(),
+	year: moment().year(),
+}
+
