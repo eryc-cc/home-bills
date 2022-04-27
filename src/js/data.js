@@ -186,3 +186,5 @@ function getThisMonthsBills(thisMonth, bills) {
 	return thisMonthsBills;
 }
 
+// Stores this month's bills in a const.
+const thisMonthsBills = getThisMonthsBills(thisMonth, bills);
