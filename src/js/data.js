@@ -13,9 +13,6 @@ let categories = {
 		key: 1651056656009
 	}
 };
-// console.group('Categories');
-// console.table(categories);
-// console.groupEnd();
 
 // Gathers all the spenders set by the user
 let spenders = [
@@ -28,11 +25,6 @@ let spenders = [
 		key: 1651056657897
 	}
 ];
-// console.group('Spenders');
-// console.table(spenders);
-// console.groupEnd();
-
-
 
 // Gathers a list of bills
 let bills = [
