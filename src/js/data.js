@@ -204,6 +204,12 @@ function calculateThisMonthsBills(bills) {
 	};
 
 	bills.forEach((bill, index) => {
+	// Inits Base structure for totalOverview
+	let totalOverview = {
+		total: 0,
+		paid: 0,
+		due: 0
+	};
 		
 	});
 }
