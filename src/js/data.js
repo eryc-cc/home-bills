@@ -203,7 +203,6 @@ function calculateThisMonthsBills(bills) {
 		categories: []
 	};
 
-	bills.forEach((bill, index) => {
 	// Inits Base structure for totalOverview
 	let totalOverview = {
 		total: 0,
@@ -215,6 +214,9 @@ function calculateThisMonthsBills(bills) {
 	let spendersOverview = [];
 	let categoriesOverview = [];
 
+
+	// Loops through each bill of the current month
+	bills.forEach((bill) => {
 		
 	});
 }
