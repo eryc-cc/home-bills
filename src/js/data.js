@@ -141,16 +141,6 @@ let overviewData = [
 	},
 ];
 
-// console.group('Overview');
-// console.table(overview[0]);
-// console.group('Spenders');
-// console.table(overview[0].spenders[0]);
-// console.groupEnd();
-// console.group('Categories');
-// console.table(overview[0].categories[0]);
-// console.groupEnd();
-
-
 
 /**************************************************
  * Calculate Overview
