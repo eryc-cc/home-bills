@@ -207,6 +207,16 @@ function calculateThisMonthsBills(bills) {
 
 	// Loops through each bill of the current month
 	bills.forEach((bill) => {
+
+		// Sum all bills
+		totalOverview.total += bill.amount;
+
+		// Sums paid and due bills
+		if (bill.isPaid) {
+			totalOverview.paid += bill.amount;
+		} else {
+			totalOverview.due += bill.amount;
+		}
 		
 	});
 }
