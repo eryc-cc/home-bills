@@ -306,4 +306,6 @@ function calculateThisMonthsBills(bills) {
 		
 		dataOverview.categories.push(category);
 	});
+	
+	return dataOverview;
 }
