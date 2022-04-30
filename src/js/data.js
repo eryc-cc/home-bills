@@ -194,7 +194,14 @@ const thisMonthsBills = getThisMonthsBills(thisMonth, bills);
  * @param {Object} bills — Passes this month's bills from getThisMonthsBills()
  */
 function calculateThisMonthsBills(bills) {
-	let dataOverview = [];
+	// Inits Base structure for dataOverview
+	let dataOverview = {
+		month: thisMonth.month,
+		year: thisMonth.year,
+		total: {},
+		spenders: [],
+		categories: []
+	};
 
 	bills.forEach((bill, index) => {
 		
