@@ -309,3 +309,5 @@ function calculateThisMonthsBills(bills) {
 	
 	return dataOverview;
 }
+
+overview = calculateThisMonthsBills(thisMonthsBills);
