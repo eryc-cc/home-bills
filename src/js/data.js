@@ -218,5 +218,69 @@ function calculateThisMonthsBills(bills) {
 			totalOverview.due += bill.amount;
 		}
 		
+		// Sets this bill's spender/category key
+		let thisSpenderKey = bill.spender.key;
+		let thisCategoryKey = bill.category.key;
+		
+		// Checks whether this bill has spender
+		const hasSpender = spendersOverview.some(spender => {
+			if (spender.key === thisSpenderKey) {
+				return true;
+			}
+			
+			return false;
+		});
+		
+		// Checks whether this bill has category
+		const hasCategory = categoriesOverview.some(category => {
+			if (category.key === thisCategoryKey) {
+				return true;
+			}
+
+			return false;
+		});
+
+
+		// If this bill doens't have a spender that already exists...
+		if (!hasSpender) {
+
+			// Sets the Spenders amount based on the first bill looped
+			spendersOverview.push({
+				key: bill.spender.key,
+				amount: bill.amount,
+				amountPaid: bill.isPaid ? bill.amount : 0,
+				amountDue: bill.isPaid ? 0 : bill.amount,
+			});
+		} else {
+
+			// Sums the rest of the bills in that spender
+			spendersOverview.forEach((spender, index) => {
+				if (spender.key === bill.spender.key) {
+					spender.amount += bill.amount;
+					bill.isPaid ? spender.amountPaid += bill.amount : spender.amountDue += bill.amount;
+				}
+			});
+		}
+
+		// If this bill doens't have a category that already exists...
+		if (!hasCategory) {
+
+			// Sets the Categories amount based on the first bill looped
+			categoriesOverview.push({
+				key: bill.category.key,
+				amount: bill.amount,
+				amountPaid: bill.isPaid ? bill.amount : 0,
+				amountDue: bill.isPaid ? 0 : bill.amount,
+			});
+		} else {
+
+			// Sums the rest the bills in that category
+			categoriesOverview.forEach((category, index) => {
+				if (category.key === bill.category.key) {
+					category.amount += bill.amount;
+					bill.isPaid ? category.amountPaid += bill.amount : category.amountDue += bill.amount;
+				}
+			});
+		}
 	});
 }
