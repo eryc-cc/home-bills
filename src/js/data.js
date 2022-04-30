@@ -283,4 +283,27 @@ function calculateThisMonthsBills(bills) {
 			});
 		}
 	});
+	
+	
+	// Calculates total percentage
+	totalOverview.percentPaid = (totalOverview.paid * 100) / totalOverview.total;
+	totalOverview.percentDue = (totalOverview.due * 100) / totalOverview.total;
+	// Pushes totalOverview into dataOverview
+	dataOverview.total = totalOverview;
+	
+	// Calculates spenders percentage
+	spendersOverview.forEach((spender, index) => {
+		spender.percentPaid = (spender.amountPaid * 100) / spender.amount;
+		spender.percentDue = (spender.amountDue * 100) / spender.amount;
+
+		dataOverview.spenders.push(spender);
+	});
+	
+	// Calculates cateogries percentage
+	categoriesOverview.forEach((category, index) => {
+		category.percentPaid = (category.amountPaid * 100) / category.amount;
+		category.percentDue = (category.amountDue * 100) / category.amount;
+		
+		dataOverview.categories.push(category);
+	});
 }
