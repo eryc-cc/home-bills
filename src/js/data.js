@@ -210,6 +210,11 @@ function calculateThisMonthsBills(bills) {
 		paid: 0,
 		due: 0
 	};
+
+	// Inits Spenders and Categories arrays
+	let spendersOverview = [];
+	let categoriesOverview = [];
+
 		
 	});
 }
