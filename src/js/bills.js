@@ -292,7 +292,7 @@ function createTxElement(data) {
     const wrapper = newElement({tag: 'section', classes: ['tx-wrapper']});
 
     // TX Category
-    const category = newElement({classes: ['tx-category', data.category ? '--' + data.category : '']});
+    const category = newElement({classes: ['tx-category', data.category ? '--' + data.category.slug : '']});
 
     // TX Block
     const block = newElement({tag: 'section', classes: ['tx-block']});

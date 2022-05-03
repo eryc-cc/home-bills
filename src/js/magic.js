@@ -66,6 +66,9 @@ addBillsForm.addEventListener('submit', (e) => {
   // Prevent the default submit event
   e.preventDefault();
 
+  const categoryEl = document.querySelector('[name="category"]');
+  const categorySlug = categoryEl.options[categoryEl.selectedIndex].getAttribute('data-slug');
+
   // Add form values to `bill` Object
   const bill = {
     desc: (document.querySelector(['[name="description"]'])).value,
