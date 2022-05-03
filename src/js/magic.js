@@ -4,6 +4,7 @@
 
 // Add local data into bills variable
 bills = getFromLocalStorage('bills', bills);
+overview = getFromLocalStorage('overview', overview);
 
 //////
 // Check if bills has anything
