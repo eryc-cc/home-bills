@@ -103,7 +103,7 @@ document.addEventListener('click', (e) => {
  * Hotkey Events
  *************************************************/
 
- const hotKeys = (e) => {
+const hotKeys = (e) => {
   let windowEvent = window.event ? window.event : e;
 
   if (windowEvent.keyCode === 78 && e.ctrlKey) {
@@ -122,3 +122,20 @@ document.addEventListener('click', (e) => {
 }
 
 document.onkeydown = hotKeys;
+
+
+function inputChanged(inputChanged, hiddenInput) {
+  const hidden = hiddenInput.value = inputChanged;
+
+  console.log(hidden);
+}
+
+document.querySelector('[name="amount"]').addEventListener('keyup', (e) => {
+  let inputValue = updateInputAmount(e.target.value);
+  inputChanged(inputValue, document.querySelector('input[name="amountRaw"]'));
+
+});
+
+const updateInputAmount = (input) => {
+  return +input.replace(/[^\de.-]/gi, "");
+}
