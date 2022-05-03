@@ -269,6 +269,10 @@ function loadDataInDOM() {
     elementsDOM.forEach((element, index) => {
         txList.append(element);
     });
+
+     // Stores this month's bills in a const.
+    const thisMonthsBills = getThisMonthsBills(thisMonth, bills);
+    overview = calculateThisMonthsBills(thisMonthsBills);
 }
 
 /**
