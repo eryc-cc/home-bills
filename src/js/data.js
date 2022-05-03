@@ -44,6 +44,8 @@ let spenders = [
 	}
 ];
 
+let overview = [];
+
 
 /**************************************************
  * Calculate Overview
