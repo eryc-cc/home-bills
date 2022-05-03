@@ -9,6 +9,7 @@
                 .add-bills-header-input
                     label.label(for="amount") Enter Amount
                     input.input.--huge(type="text", name="amount", placeholder="6,500", inputmode="numeric", required)
+                    input.input.--hidden(type="hidden", name="amountRaw", required)
 
                 button#closeModalButton.close-modal-button
                     include ../../assets/icons/icon--close.svg
