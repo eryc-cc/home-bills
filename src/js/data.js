@@ -3,134 +3,45 @@
  *************************************************/
 
 // Gathers all the categories set by the user
-let categories = {
-	creditcard: {
+let categories = [
+	{
 		name: 'Credit Card',
-		key: 1651056654886
+		slug: 'credit-card',
+		key: SHA1('creditcard') // 5e667e09540800fcbba5c0215f2d09aed1fa57df
 	},
-	home: {
+	{
 		name: 'Home',
-		key: 1651056656009
-	}
-};
+		slug: 'home',
+		key: SHA1('home') // e83249bd3ba79932e16fb1fb5100dafade9954c2
+	},
+	{
+		name: 'Utility',
+		slug: 'utility',
+		key: SHA1('utility') // 8884fd30d64e5cf97054c14e8a217a1fb0cd7e16
+	},
+	{
+		name: 'Health',
+		slug: 'health',
+		key: SHA1('health') // 834b34f16f451e00f268dd5c8c81d16e3c020275
+	},
+	{
+		name: 'Miscellaneous',
+		slug: 'misc',
+		key: SHA1('misc') // 291d3e10d996b9590a718565f00bfbbd0ad02bef
+	},
+];
+
 
 // Gathers all the spenders set by the user
 let spenders = [
 	{
 		name: 'Spender One',
-		key: 1651056656974
+		key: SHA1('Spender One')
 	},
 	{
 		name: 'Spender Two',
-		key: 1651056657897
+		key: SHA1('Spender Two')
 	}
-];
-
-// Gathers a list of bills
-let bills = [
-	{
-		key: 1651056838809,
-		isPaid: false,
-	
-		amount: 2000,
-		amountFormatted: "R$ 2,000.00",
-		category: categories.creditcard,
-		duedate: "2022-03-08", // YYYY-MM-DD
-		spender: spenders[0],
-	},
-	{
-		key: 1651056839561,
-		isPaid: true,
-	
-		amount: 4000,
-		amountFormatted: "R$ 4,000.00",
-		category: categories.creditcard,
-		duedate: "2022-04-08", // YYYY-MM-DD
-		spender: spenders[1],
-	},
-	{
-		key: 1651056840224,
-		isPaid: true,
-	
-		amount: 3000,
-		amountFormatted: "R$ 3,000.00",
-		category: categories.home,
-		duedate: "2022-04-28", // YYYY-MM-DD
-		spender: spenders[1],
-	},
-	{
-		key: 1651056840856,
-		isPaid: false,
-	
-		amount: 1000,
-		amountFormatted: "R$ 1,000.00",
-		category: categories.home,
-		duedate: "2022-04-13", // YYYY-MM-DD
-		spender: spenders[1],
-	}
-];
-
-// Gather all DOM elements in this array
-let elementsDOM = {};
-
-let overview = [];
-
-let overviewData = [
-	{
-		month: 01,
-		year: 2022,
-
-		total: {
-			amount: 20000,
-			amountFormatted: "R$ 20,000.00",
-			amountPaid: 8000,
-			percentPaid: 40,
-			amountDue: 12000,
-			percentDue: 60
-		},
-
-		spenders: [
-			{
-				key: 1651056656974,
-				amount: 16000,
-				amountFormatted: "R$ 16,000.00",
-				amountPaid: 8000,
-				percentPaid: 50,
-				amountDue: 8000,
-				percentDue: 50
-			},
-			{
-				key: 1651056657897,
-				amount: 4000,
-				amountFormatted: "R$ 4,000.00",
-				amountPaid: 0,
-				percentPaid: 0,
-				amountDue: 4000,
-				percentDue: 100
-			},
-		],
-		
-		categories: [
-			{
-				key: 1651056654886,
-				amount: 4000,
-				amountFormatted: "R$ 4,000.00",
-				amountPaid: 0,
-				percentPaid: 0,
-				amountDue: 4000,
-				percentDue: 100
-			},
-			{
-				key: 1651056656009,
-				amount: 4000,
-				amountFormatted: "R$ 4,000.00",
-				amountPaid: 0,
-				percentPaid: 0,
-				amountDue: 4000,
-				percentDue: 100
-			},
-		]
-	},
 ];
 
 
