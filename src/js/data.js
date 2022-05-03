@@ -111,13 +111,13 @@ function calculateThisMonthsBills(bills) {
 	bills.forEach((bill) => {
 
 		// Sum all bills
-		totalOverview.total += bill.amount;
+		totalOverview.total += bill.amountRaw;
 
 		// Sums paid and due bills
-		if (bill.isPaid) {
-			totalOverview.paid += bill.amount;
+		if (bill.paid) {
+			totalOverview.paid += bill.amountRaw;
 		} else {
-			totalOverview.due += bill.amount;
+			totalOverview.due += bill.amountRaw;
 		}
 		
 		// Sets this bill's spender/category key
@@ -149,17 +149,17 @@ function calculateThisMonthsBills(bills) {
 			// Sets the Spenders amount based on the first bill looped
 			spendersOverview.push({
 				key: bill.spender.key,
-				amount: bill.amount,
-				amountPaid: bill.isPaid ? bill.amount : 0,
-				amountDue: bill.isPaid ? 0 : bill.amount,
+				amount: bill.amountRaw,
+				amountPaid: bill.paid ? bill.amountRaw : 0,
+				amountDue: bill.paid ? 0 : bill.amountRaw,
 			});
 		} else {
 
 			// Sums the rest of the bills in that spender
 			spendersOverview.forEach((spender, index) => {
 				if (spender.key === bill.spender.key) {
-					spender.amount += bill.amount;
-					bill.isPaid ? spender.amountPaid += bill.amount : spender.amountDue += bill.amount;
+					spender.amount += bill.amountRaw;
+					bill.paid ? spender.amountPaid += bill.amountRaw : spender.amountDue += bill.amountRaw;
 				}
 			});
 		}
@@ -170,17 +170,17 @@ function calculateThisMonthsBills(bills) {
 			// Sets the Categories amount based on the first bill looped
 			categoriesOverview.push({
 				key: bill.category.key,
-				amount: bill.amount,
-				amountPaid: bill.isPaid ? bill.amount : 0,
-				amountDue: bill.isPaid ? 0 : bill.amount,
+				amount: bill.amountRaw,
+				amountPaid: bill.paid ? bill.amountRaw : 0,
+				amountDue: bill.paid ? 0 : bill.amountRaw,
 			});
 		} else {
 
 			// Sums the rest the bills in that category
 			categoriesOverview.forEach((category, index) => {
 				if (category.key === bill.category.key) {
-					category.amount += bill.amount;
-					bill.isPaid ? category.amountPaid += bill.amount : category.amountDue += bill.amount;
+					category.amount += bill.amountRaw;
+					bill.paid ? category.amountPaid += bill.amountRaw : category.amountDue += bill.amountRaw;
 				}
 			});
 		}
@@ -188,26 +188,30 @@ function calculateThisMonthsBills(bills) {
 	
 	
 	// Calculates total percentage
-	totalOverview.percentPaid = (totalOverview.paid * 100) / totalOverview.total;
-	totalOverview.percentDue = (totalOverview.due * 100) / totalOverview.total;
+	totalOverview.percentPaid = totalOverview.total === 0 ? 0 : (totalOverview.paid * 100) / totalOverview.total;
+	totalOverview.percentDue = totalOverview.total === 0 ? 0 : (totalOverview.due * 100) / totalOverview.total;
 	// Pushes totalOverview into dataOverview
 	dataOverview.total = totalOverview;
 	
 	// Calculates spenders percentage
 	spendersOverview.forEach((spender, index) => {
-		spender.percentPaid = (spender.amountPaid * 100) / spender.amount;
-		spender.percentDue = (spender.amountDue * 100) / spender.amount;
+		spender.percentPaid = spender.amount === 0 ? 0 : (spender.amountPaid * 100) / spender.amount;
+		spender.percentDue = spender.amount === 0 ? 0 : (spender.amountDue * 100) / spender.amount;
 
 		dataOverview.spenders.push(spender);
 	});
 	
 	// Calculates cateogries percentage
 	categoriesOverview.forEach((category, index) => {
-		category.percentPaid = (category.amountPaid * 100) / category.amount;
-		category.percentDue = (category.amountDue * 100) / category.amount;
+		category.percentPaid = category.amount === 0 ? 0 : (category.amountPaid * 100) / category.amount;
+		category.percentDue = category.amount === 0 ? 0 : (category.amountDue * 100) / category.amount;
 		
 		dataOverview.categories.push(category);
 	});
+
+	// Adds to localStorage
+	addToLocalStorage('overview', dataOverview);
 	
+	// Returns data — if you want to store in a variable
 	return dataOverview;
 }

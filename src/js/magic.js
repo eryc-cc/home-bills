@@ -73,7 +73,11 @@ addBillsForm.addEventListener('submit', (e) => {
   const bill = {
     desc: (document.querySelector(['[name="description"]'])).value,
     amount: (document.querySelector(['[name="amount"]'])).value,
-    category: (document.querySelector(['[name="category"]'])).value,
+    amountRaw: (document.querySelector(['[name="amountRaw"]'])).value,
+    category: {
+      key: (document.querySelector(['[name="category"]'])).value,
+      slug: categorySlug
+    },
     duedate: (document.querySelector(['[name="duedate"]'])).value,
     spender: (document.querySelector(['[name="spender"]'])).value,
     

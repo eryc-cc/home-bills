@@ -31,6 +31,7 @@ function addBill(data) {
         // Grab all the data passed and add it to an Object
         const bill = {
             amount: data.amount,
+            amountRaw: parseInt(data.amountRaw),
             desc: data.desc,
             category: data.category,
             duedate: data.duedate,
